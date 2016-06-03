@@ -12,5 +12,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          $this->call(AdminSeeder::class);
+         $this->call(InvoiceStatusTypeSeeder::class);
+         $this->call(ServiceActionStatusTypeSeeder::class);
+         
+         $this->call(ServiceDeviceStatusTypeSeeder::class);
+         $this->call(ServiceRequestStatusTypeSeeder::class);
+         
+          
     }
 }

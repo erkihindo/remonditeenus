@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServiceRequestStatusTypesTable extends Migration
+class CreateServiceDeviceStatusTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,11 @@ class CreateServiceRequestStatusTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('service_request_status_types', function (Blueprint $table) {
+        Schema::create('service_device_status_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type_name');
            
+            $table->string('type_name');
+            
         });
     }
 
@@ -26,6 +27,6 @@ class CreateServiceRequestStatusTypesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('service_request_status_types');
+        Schema::drop('service_device_status_types');
     }
 }
