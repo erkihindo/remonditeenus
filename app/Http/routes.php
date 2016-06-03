@@ -38,20 +38,20 @@ Route::get('/bills', [
 
 //TÖÖTAJA
 Route::get('/deviceparts', [
-    'uses' => '______@index',
-    'middleware' => 'auth'
+    'uses' => 'DevicePartsController@index',
+    'middleware' => 'employee'
     ]);
 Route::get('/devices', [
     'uses' => '______@index',
-    'middleware' => 'auth'
+    'middleware' => 'employee'
     ]);
 Route::get('/invoices', [
     'uses' => '______@index',
-    'middleware' => 'auth'
+    'middleware' => 'employee'
     ]);
 Route::get('/serviceorders', [
     'uses' => '______@index',
-    'middleware' => 'auth'
+    'middleware' => 'employee'
     ]);
 
 
