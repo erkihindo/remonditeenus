@@ -65,6 +65,13 @@ Route::get('/servicerequest', [
     ]);
 
 
+Route::post('/createrequest',[
+    'uses' => 'ServiceRequestController@createRequest',
+    'as' => 'servicerequest.create',
+    'middleware' => 'employee'
+        
+        ]);
+
 
 
 

@@ -13,4 +13,8 @@ class ServiceRequestController extends Controller
         
         return view('employee/servicerequest');
     }
+    
+    public function createRequest(Request $request) {
+        dd($request);
+    }
 }
