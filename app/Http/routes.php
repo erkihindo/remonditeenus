@@ -20,18 +20,39 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 //KLIENT
-Route::get('/orders', '____@index');
+Route::get('/orders', [
+    'uses' => '______@index',
+    'middleware' => 'auth'
+    ]);
 
-Route::get('/notes', '____@index');
+Route::get('/notes', [
+    'uses' => '______@index',
+    'middleware' => 'auth'
+    ]);
 
-Route::get('/bills', '____@index');
+Route::get('/bills', [
+    'uses' => '______@index',
+    'middleware' => 'auth'
+    ]);
 
 
 //TÖÖTAJA
-Route::get('/deviceparts', '____@index');
-Route::get('/devices', '____@index');
-Route::get('/invoices', '____@index');
-Route::get('/serviceorders', '____@index');
+Route::get('/deviceparts', [
+    'uses' => '______@index',
+    'middleware' => 'auth'
+    ]);
+Route::get('/devices', [
+    'uses' => '______@index',
+    'middleware' => 'auth'
+    ]);
+Route::get('/invoices', [
+    'uses' => '______@index',
+    'middleware' => 'auth'
+    ]);
+Route::get('/serviceorders', [
+    'uses' => '______@index',
+    'middleware' => 'auth'
+    ]);
 
 
 
