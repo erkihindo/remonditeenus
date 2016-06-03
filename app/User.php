@@ -27,4 +27,8 @@ class User extends Authenticatable
     public function employee() {
         return $this->hasOne('App\Employee');
     }
+    
+    public function customer() {
+        return $this->hasOne('App\Customer');
+    }
 }
