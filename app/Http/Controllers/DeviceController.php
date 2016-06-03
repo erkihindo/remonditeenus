@@ -8,8 +8,13 @@ use App\Http\Requests;
 
 class DeviceController extends Controller
 {
-    public function index()
+    public function alldevices()
     {
         return view('employee/devices');
+    }
+    
+    public function adddevice()
+    {
+        return view('employee/adddevice');
     }
 }

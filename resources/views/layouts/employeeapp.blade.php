@@ -53,6 +53,12 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/devices') }}">Devices</a></li>
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/adddevice') }}">Add dev</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/invoices') }}">Check please</a></li>
+                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">

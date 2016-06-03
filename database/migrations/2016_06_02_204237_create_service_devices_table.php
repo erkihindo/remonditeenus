@@ -15,6 +15,7 @@ class CreateServiceDevicesTable extends Migration
         Schema::create('service_devices', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('device_id');
+            $table->integer('service_device_status_type_id');
             $table->integer('service_order_id');
             $table->timestamp('to_store');
             $table->timestamp('from_store');

@@ -42,11 +42,15 @@ Route::get('/deviceparts', [
     'middleware' => 'employee'
     ]);
 Route::get('/devices', [
-    'uses' => 'DeviceController@index',
+    'uses' => 'DeviceController@alldevices',
+    'middleware' => 'employee'
+    ]);
+Route::get('/adddevice', [
+    'uses' => 'DeviceController@adddevice',
     'middleware' => 'employee'
     ]);
 Route::get('/invoices', [
-    'uses' => '______@index',
+    'uses' => 'InvoiceController@index',
     'middleware' => 'employee'
     ]);
 Route::get('/serviceorders', [
