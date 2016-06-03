@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'uses' => 'HomeController@index',
+    'middleware' => 'auth'
+    ]);
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
 
 //KLIENT
 Route::get('/orders', [
@@ -42,7 +42,7 @@ Route::get('/deviceparts', [
     'middleware' => 'employee'
     ]);
 Route::get('/devices', [
-    'uses' => '______@index',
+    'uses' => 'DeviceController@index',
     'middleware' => 'employee'
     ]);
 Route::get('/invoices', [
@@ -54,6 +54,11 @@ Route::get('/serviceorders', [
     'middleware' => 'employee'
     ]);
 
+Route::get('/servicerequest', [
+    'uses' => 'ServiceRequestController@index',
+    'as' => 'servicerequest', 
+    'middleware' => 'employee'
+    ]);
 
 
 
