@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <form action="{{route('servicerequest')}}" method="POST" style="margin-left: 14%">
+            <form action="{{route('servicerequest.create')}}" method="POST" style="margin-left: 14%">
                 <input type="hidden" value="{{ Session::token() }}" name="_token">
                 <table>
                     <tr>
@@ -17,11 +17,11 @@
                     </tr>
                     <tr>
                         <td>Kliendi kirjeldus:</td>
-                        <td><textarea></textarea></td>
+                        <td><textarea name="customer_desc"></textarea></td>
                     </tr>
                     <tr>
                         <td>Vastuvõtja kirjeldus:</td>
-                        <td><textarea></textarea></td>
+                        <td><textarea name="employee_desc"></textarea></td>
                     </tr>
                     <tr>
                         <td><input type="submit" value="Salvesta kliendi pöördumine"></td>
