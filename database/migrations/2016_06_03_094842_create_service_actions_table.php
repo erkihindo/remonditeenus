@@ -14,7 +14,7 @@ class CreateServiceActionsTable extends Migration
     {
          Schema::create('service_actions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('service_action_status_type');
+            $table->integer('service_action_status_type_id');
             $table->integer('service_type_id');
             $table->integer('service_device_id');
             $table->integer('service_order_id');
