@@ -19,10 +19,23 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::auth();
+//KLIENT
+Route::get('/orders', '____@index');
 
-Route::get('/home', 'HomeController@index');
+Route::get('/notes', '____@index');
 
-Route::auth();
+Route::get('/bills', '____@index');
 
-Route::get('/home', 'HomeController@index');
+
+//TÖÖTAJA
+Route::get('/deviceparts', '____@index');
+Route::get('/devices', '____@index');
+Route::get('/invoices', '____@index');
+Route::get('/serviceorders', '____@index');
+
+
+
+
+
+
+
