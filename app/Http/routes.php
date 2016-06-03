@@ -11,28 +11,54 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'uses' => 'HomeController@index',
+    'middleware' => 'auth'
+    ]);
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
 
 //KLIENT
-Route::get('/orders', '____@index');
+Route::get('/orders', [
+    'uses' => '______@index',
+    'middleware' => 'auth'
+    ]);
 
-Route::get('/notes', '____@index');
+Route::get('/notes', [
+    'uses' => '______@index',
+    'middleware' => 'auth'
+    ]);
 
-Route::get('/bills', '____@index');
+Route::get('/bills', [
+    'uses' => '______@index',
+    'middleware' => 'auth'
+    ]);
 
 
 //TÖÖTAJA
-Route::get('/deviceparts', '____@index');
-Route::get('/devices', '____@index');
-Route::get('/invoices', '____@index');
-Route::get('/serviceorders', '____@index');
+Route::get('/deviceparts', [
+    'uses' => 'DevicePartsController@index',
+    'middleware' => 'employee'
+    ]);
+Route::get('/devices', [
+    'uses' => 'DeviceController@index',
+    'middleware' => 'employee'
+    ]);
+Route::get('/invoices', [
+    'uses' => '______@index',
+    'middleware' => 'employee'
+    ]);
+Route::get('/serviceorders', [
+    'uses' => '______@index',
+    'middleware' => 'employee'
+    ]);
 
+Route::get('/servicerequest', [
+    'uses' => 'ServiceRequestController@index',
+    'as' => 'servicerequest', 
+    'middleware' => 'employee'
+    ]);
 
 
 
