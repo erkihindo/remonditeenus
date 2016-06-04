@@ -90,4 +90,7 @@ function changeUnits() {
 }
 function calculateTotal() {
     document.getElementById("total_price1").value = serviceamount.value * document.getElementById("unit_price1").value;
+    //ENTER PART PRICE CALCULATION HERE
+    
+    //ENTER TOTAL PRICE CALCULATION HERE
 }
