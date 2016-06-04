@@ -32,7 +32,10 @@
                         <td>ühiku hind: <input type="number" name="unit_price2"></td>
                         <td>hind kokku: <input type="number" name="total_price2"</td>
                     </tr>
-
+                    <tr>
+                        <td><a href="">Lisa töö</a></td>
+                        <td><a href="">Lisa osa</a></td>
+                    </tr>
                     <tr>
                         <td>tellimuse staatus:</td>
                         <td><select name="order_status"></select></td>
