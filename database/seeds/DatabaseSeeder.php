@@ -20,7 +20,10 @@ class DatabaseSeeder extends Seeder
          $this->call(ServiceRequestStatusTypeSeeder::class);
          
          $this->call(ServiceRequestSeeder::class);
+         $this->call(SoStatusTypeSeeder::class); 
+         $this->call(ServiceUnitTypeSeeder::class);
          
+         $this->call(ServiceTypeSeeder::class);
           
     }
 }

@@ -1,6 +1,12 @@
 @extends('layouts.employeeapp')
 
 @section('content')
+
+<script>
+var token = '{{ Session::token() }}';
+var urlToGetSoStatusTypes = '{{ route('getsostatustypes') }}';
+var urlToGetServiceTypes = '{{ route('getservicetypes') }}';
+</script>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -23,7 +29,7 @@
                         <td>Töö:</td>
                         <td><input type="text" name="job"></td>
                         <td>Teenus:</td>
-                        <td><select name="service"></select></td>
+                        <td><select name="service" id="service_types"></select></td>
                         <td>kogus:</td>
                         <td><input type="number" name="amount1"></td>
                         <td>[h]</td>
@@ -45,11 +51,10 @@
                     </tr>
                     <tr>
                         <td><a href="">Lisa töö</a></td>
-                        <td><a href="">Lisa osa</a></td>
                     </tr>
                     <tr>
                         <td>tellimuse staatus:</td>
-                        <td><select name="order_status"></select></td>
+                        <td><select name="order_status" id="order_status"></select></td>
                         <td><input type="button" value="Salvesta tellimus"></td>
                         <td><input type="submit" value="Tee arve"></td>
                     </tr>
