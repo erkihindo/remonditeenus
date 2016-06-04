@@ -19,6 +19,7 @@ var urlToGetCustomers = '{{ route('getAllCustomers') }}';
                     <tr>
                         <td>Klient:</td>
                         <td><span id="name"></span><input type="button" value="Otsi klienti" onclick="showClientSearchForm()"></td>
+                    <input type="hidden" name ="customer" id="name_input">
                     </tr>
                     <tr>
                         <td>Kliendi kirjeldus:</td>

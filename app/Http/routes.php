@@ -64,7 +64,7 @@ Route::get('/servicerequest', [
     'middleware' => 'employee'
     ]);
 
-Route::get('/serviceorder', [
+Route::get('/serviceorder/{servicerequest}', [
     'uses' => 'ServiceOrderController@index',
     'as' => 'serviceorder', 
     'middleware' => 'employee'

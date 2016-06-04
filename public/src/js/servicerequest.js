@@ -45,5 +45,6 @@ function hideClientSearchForm() {
 function saveClient() {
     var name = document.getElementById('names').value;
     document.getElementById('name').innerHTML = name;
+    document.getElementById('name_input').value = name;
     hideClientSearchForm();
 }
