@@ -45,6 +45,75 @@
                 </table>
             </form>
         </div>
+        <div>
+            <form action="" style="margin-left: 14%">
+                <table>
+                    <tr>
+                        <td colspan="2">SEADME LISAMINE</td>
+                    </tr>
+                    <tr>
+                        <th>nimi</th>
+                        <td><input type="text" name="name"></td>
+                    </tr>
+                    <tr>
+                        <th>mudel</th>
+                        <td><input type="text" name="model"></td>
+                    </tr>
+                    <tr>
+                        <th>kirjeldus</th>
+                        <td><input type="text" name="description"></td>
+                    </tr>
+                    <tr>
+                        <th>tootja</th>
+                        <td><input type="text" name="manufacturer"></td>
+                    </tr>
+                    <tr>
+                        <th>seerianumber</th>
+                        <td><input type="text" name="serial_nr"></td>
+                    </tr>
+                    <tr>
+                        <th>seadme tüüp</th>
+                        <td><select name="type"></select></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Lisa"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            <form action="" style="margin-left: 14%">
+                <input type="hidden" value="{{ Session::token() }}" name="_token">
+                <table>
+                    <tr>
+                        <td colspan="2">SEADME OTSING</td>
+                    </tr>
+                    <tr>
+                        <th>nimi</th>
+                        <td><input type="text" name="device_name"></td>
+                    </tr>
+                    <tr>
+                        <th>mudel</th>
+                        <td><input type="text" name="model"></td>
+                    </tr>
+                    <tr>
+                        <th>seerianumber</th>
+                        <td><input type="text" name="serial_nr"></td>
+                    </tr>
+                    <tr>
+                        <th>seadme tüüp</th>
+                        <td><select name="type"></select></td>
+                    </tr>
+                    <tr>
+                        <th>kliendi nimi</th>
+                        <td><input type="text" name="client_name"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Otsi"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
     </div>
 </div>
 
