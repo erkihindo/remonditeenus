@@ -29,8 +29,8 @@ var urlToGetCustomers = '{{ route('getAllCustomers') }}';
                         <td><textarea name="employee_desc"></textarea></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" value="Salvesta kliendi pöördumine"></td>
-                        <td><input type="button" value="Vormista tellimus"></td>
+                        <td><input type="button" value="Salvesta kliendi pöördumine"></td>
+                        <td><input type="submit" value="Vormista tellimus"></td>
                     </tr>
                 </table>
             </form>
