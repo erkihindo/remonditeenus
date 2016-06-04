@@ -64,7 +64,7 @@ Route::get('/servicerequest', [
     'middleware' => 'employee'
     ]);
 
-
+//Töötaja actionid
 Route::post('/createrequest',[
     'uses' => 'ServiceRequestController@createRequest',
     'as' => 'servicerequest.create',
@@ -72,7 +72,11 @@ Route::post('/createrequest',[
         
         ]);
 
-
+Route::get('/getallcustomers', [
+    'uses' => 'CustomerController@getAll',
+    'as' => 'getAllCustomers', 
+    'middleware' => 'employee'
+    ]);
 
 
 
