@@ -3,33 +3,45 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <form action="{{route('serviceorder.create')}}" method="POST" style="margin-left: 14%">
+        <div class="col-md-12">
+            <form action="{{route('serviceorder.create')}}" method="POST">
                 <input type="hidden" value="{{ Session::token() }}" name="_token">
                 <table>
                     <tr>
                         <td colspan="2">Tellimus nr {{ $newID }}</td>
                     </tr>
                     <tr>
-                        <td>Vali tellimuse seade:</td>
-                        <td><select name="device"></select></td>
+                        <td colspan="2">Vali tellimuse seade:</td>
+                        <td><input type="button" value="Otsi seadet" onclick="showDeviceSearchForm()"></td>
+                        <td><input type="button" value="Lisa uus seade" onclick="showDeviceAddForm()"></td>
                     </tr>
                     <tr>
-                        <td>Summa kokku:</td>
+                        <td colspan="2">Summa kokku:</td>
                         <td>{{ $servicerequest->total_order_price }}</td>
                     </tr>
                     <tr>
-                        <td>Töö: <input type="text" name="job"></td>
-                        <td>Teenus: <select name="service"></select></td>
-                        <td>kogus: <input type="number" name="amount1"></td>
-                        <td>ühiku hind: <input type="number" name="unit_price1"> [h]</td>
-                        <td>hind kokku:<input type="number" name="total_price1"</td>
+                        <td>Töö:</td>
+                        <td><input type="text" name="job"></td>
+                        <td>Teenus:</td>
+                        <td><select name="service"></select></td>
+                        <td>kogus:</td>
+                        <td><input type="number" name="amount1"></td>
+                        <td>[h]</td>
+                        <td>ühiku hind:</td>
+                        <td><input type="number" name="unit_price1"></td>
+                        <td>hind kokku:</td>
+                        <td><input type="number" name="total_price1"</td>
                     </tr>
                     <tr>
-                        <td colspan="2">Osa: <input type="text" name="part"></textarea></td>
-                        <td>kogus: <input type="number" name="amount2"> [tk]</td>
-                        <td>ühiku hind: <input type="number" name="unit_price2"></td>
-                        <td>hind kokku: <input type="number" name="total_price2"</td>
+                        <td>Osa:</td>
+                        <td colspan="3"><input type="text" name="part"></textarea></td>
+                        <td>kogus:</td>
+                        <td><input type="number" name="amount2"></td>
+                        <td>[tk]</td>
+                        <td>ühiku hind:</td>
+                        <td><input type="number" name="unit_price2"></td>
+                        <td>hind kokku:</td>
+                        <td><input type="number" name="total_price2"</td>
                     </tr>
                     <tr>
                         <td><a href="">Lisa töö</a></td>
@@ -44,8 +56,10 @@
                 </table>
             </form>
         </div>
-        <div>
-            <form action="" style="margin-left: 14%">
+    </div>
+    <div class="row">
+        <div class="col-md-6" id="deviceAddForm">
+            <form action="">
                 <table>
                     <tr>
                         <td colspan="2">SEADME LISAMINE</td>
@@ -80,9 +94,8 @@
                 </table>
             </form>
         </div>
-        <div class="col-md-10 col-md-offset-1">
-            <form action="" style="margin-left: 14%">
-                <input type="hidden" value="{{ Session::token() }}" name="_token">
+        <div class="col-md-6" id="deviceSearchForm">
+            <form action="">
                 <table>
                     <tr>
                         <td colspan="2">SEADME OTSING</td>
@@ -115,5 +128,5 @@
         </div>
     </div>
 </div>
-
+<script src="{{ URL::to('src/js/serviceorder.js') }}"></script>
 @endsection
