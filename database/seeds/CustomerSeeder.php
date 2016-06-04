@@ -12,7 +12,7 @@ class CustomerSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Bob',
+            'name' => 'Bob Bobbington',
             'email' => 'bob@bob.com',
             'password' => bcrypt('bob'),
         ]);
@@ -24,7 +24,7 @@ class CustomerSeeder extends Seeder
         
         
         DB::table('users')->insert([
-            'name' => 'Billy',
+            'name' => 'Billy Boy',
             'email' => 'billy@billy.com',
             'password' => bcrypt('billy'),
         ]);
@@ -35,7 +35,7 @@ class CustomerSeeder extends Seeder
         ]);
         
         DB::table('users')->insert([
-            'name' => 'Steven',
+            'name' => 'Steven Seagull',
             'email' => 'steven@steven.com',
             'password' => bcrypt('steven'),
         ]);
