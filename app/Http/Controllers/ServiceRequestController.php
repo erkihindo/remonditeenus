@@ -9,6 +9,7 @@ use App\Service_request;
 use App\User;
 
 use Illuminate\Support\Facades\Auth;
+
 class ServiceRequestController extends Controller
 {
     public function index()
