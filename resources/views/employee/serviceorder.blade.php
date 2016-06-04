@@ -1,7 +1,6 @@
 @extends('layouts.employeeapp')
 
 @section('content')
-{{ $servicerequest }}
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -17,7 +16,7 @@
                     </tr>
                     <tr>
                         <td>Summa kokku:</td>
-                        <td>{{ $total_order_price }}</td>
+                        <td>{{ $servicerequest->total_order_price }}</td>
                     </tr>
                     <tr>
                         <td>Töö: <input type="text" name="job"></td>
