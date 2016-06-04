@@ -64,6 +64,12 @@ Route::get('/servicerequest', [
     'middleware' => 'employee'
     ]);
 
+Route::get('/serviceorder', [
+    'uses' => 'ServiceOrderController@index',
+    'as' => 'serviceorder', 
+    'middleware' => 'employee'
+    ]);
+
 //Töötaja actionid
 Route::post('/createrequest',[
     'uses' => 'ServiceRequestController@createRequest',
