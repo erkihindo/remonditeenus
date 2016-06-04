@@ -88,5 +88,14 @@ Route::get('/getallcustomers', [
     'middleware' => 'employee'
     ]);
 
+Route::get('/getsostatustypes', [
+    'uses' => 'SoStatusController@getAll',
+    'as' => 'getsostatustypes', 
+    'middleware' => 'employee'
+    ]);
 
-
+Route::get('/getservicetypes', [
+    'uses' => 'ServiceController@getAll',
+    'as' => 'getservicetypes', 
+    'middleware' => 'employee'
+    ]);
