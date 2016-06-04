@@ -56,6 +56,9 @@
                     <li><a href="{{ url('/servicerequest') }}">New request</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/serviceorder') }}">New order</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
                     <li><a href="{{ url('/devices') }}">Devices</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
