@@ -37,14 +37,15 @@ var urlToGetCustomers = '{{ route('getAllCustomers') }}';
             
         </div>
         <div class="col-md-5">
-            <form id="clientSearchForm" action="">
+            <div id="clientSearchForm" >
                 Kliendi otsing<br>
-                Nimi:<input type="text"><br>
-                <input type="submit" value="Otsi">
-            </form>
+                Nimi:<input type="text" id="names"><br>
+                <button type="submit" onclick="">Lisa</button>
+            </div>
         </div>
     </div>
 </div>
-
+<script src="{{ URL::to('src/js/MSelectDBox.js') }}"></script>
 <script src="{{ URL::to('src/js/servicerequest.js') }}"></script>
+
 @endsection
