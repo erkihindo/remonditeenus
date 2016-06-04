@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Service_order;
 use App\Service_request;
 
+use Illuminate\Support\Facades\Auth;
+
 class ServiceOrderController extends Controller
 {
     public function index($servicerequest)
@@ -25,5 +27,17 @@ class ServiceOrderController extends Controller
             'servicerequest' => $request,
                 
                 ]);
+    }
+    
+    public function viewCustomerOrders() {
+        $orders = Service_order::get();
+        $customerOrders = [];
+        
+        foreach($orders as $order) {
+            if($order->service_request->user_id == Auth::user()->id) {
+                array_push($customerOrders, $order);
+            }
+        }
+        return view('customer/customerorders', ['orders' => $customerOrders]);
     }
 }

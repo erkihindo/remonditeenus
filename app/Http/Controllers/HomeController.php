@@ -24,7 +24,7 @@ class HomeController extends Controller
             
             return redirect()-> route('servicerequest');
         } else if($user->customer != null)  {
-            dd("Customer TODO view");
+            return redirect()-> route('customerorders');
             
         }
             

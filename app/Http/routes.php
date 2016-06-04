@@ -20,8 +20,9 @@ Route::auth();
 
 
 //KLIENT
-Route::get('/orders', [
-    'uses' => '______@index',
+Route::get('/customerorders', [
+    'uses' => 'ServiceOrderController@viewCustomerOrders',
+    'as' => 'customerorders',
     'middleware' => 'auth'
     ]);
 
