@@ -36,7 +36,7 @@ var urlToGetServiceTypes = '{{ route('getservicetypes') }}';
                         <td>ühiku hind:</td>
                         <td><input type="number" name="unit_price1" id="unit_price1"></td>
                         <td>hind kokku:</td>
-                        <td><input type="number" name="total_price1" id="total_price1"></td>
+                        <td><input type="number" name="total_price1" id="total_price1" disabled></td>
                     </tr>
                     <tr>
                         <td>Osa:</td>
@@ -47,7 +47,7 @@ var urlToGetServiceTypes = '{{ route('getservicetypes') }}';
                         <td>ühiku hind:</td>
                         <td><input type="number" name="unit_price2"></td>
                         <td>hind kokku:</td>
-                        <td><input type="number" name="total_price2"</td>
+                        <td><input type="number" name="total_price2" disabled></td>
                     </tr>
                     <tr>
                         <td><a href="">Lisa töö</a></td>

@@ -1,5 +1,6 @@
 var services = [];
 var servicedropdown;
+var serviceamount;
 
 window.onload = function () {
         hideDeviceSearchForm();
@@ -61,7 +62,14 @@ $.ajax({
     servicedropdown.addEventListener("change", function() {
         console.log("Changed service " + servicedropdown.value);
         changeUnits();
+        calculateTotal();
     });
+    serviceamount = document.getElementById("amount1");
+    serviceamount.addEventListener("change", function() {
+        console.log("Changed amount " + serviceamount.value);
+        calculateTotal();
+    });
+    
     document.getElementById("unit_price1").value = services[0][2];
     document.getElementById("unit_type1").innerHTML = services[0][1];
     
@@ -79,4 +87,7 @@ function changeUnits() {
         document.getElementById("unit_price1").value = services[2][2];
     document.getElementById("unit_type1").innerHTML = services[2][1];
     }
+}
+function calculateTotal() {
+    document.getElementById("total_price1").value = serviceamount.value * document.getElementById("unit_price1").value;
 }
