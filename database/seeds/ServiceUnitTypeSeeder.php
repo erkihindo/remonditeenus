@@ -13,13 +13,13 @@ class ServiceUnitTypeSeeder extends Seeder
     {
         $types = array(
         [
-            'type_name' => "hr", 
+            'type_name' => "[hr]", 
         ],
         [
-            'type_name' => "eur", 
+            'type_name' => "[eur]", 
         ],
         [
-            'type_name' => "op", 
+            'type_name' => "[op]", 
         ]    );
         DB::table('service_unit_types')->insert($types);
     }

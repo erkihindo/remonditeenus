@@ -31,12 +31,12 @@ var urlToGetServiceTypes = '{{ route('getservicetypes') }}';
                         <td>Teenus:</td>
                         <td><select name="service" id="service_types"></select></td>
                         <td>kogus:</td>
-                        <td><input type="number" name="amount1"></td>
-                        <td>[h]</td>
+                        <td><input type="number" name="amount1" id="amount1"></td>
+                        <td id="unit_type1">[h]</td>
                         <td>ühiku hind:</td>
-                        <td><input type="number" name="unit_price1"></td>
+                        <td><input type="number" name="unit_price1" id="unit_price1"></td>
                         <td>hind kokku:</td>
-                        <td><input type="number" name="total_price1"</td>
+                        <td><input type="number" name="total_price1" id="total_price1"></td>
                     </tr>
                     <tr>
                         <td>Osa:</td>
