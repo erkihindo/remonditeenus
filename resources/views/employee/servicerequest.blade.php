@@ -14,7 +14,7 @@ var urlToGetCustomers = '{{ route('getAllCustomers') }}';
                 <input type="hidden" value="{{ Session::token() }}" name="_token">
                 <table>
                     <tr>
-                        <td colspan="2">Kliendi pöördumine nr </td>
+                        <td colspan="2">Kliendi pöördumine nr {{ $newID }}</td>
                     </tr>
                     <tr>
                         <td>Klient:</td>

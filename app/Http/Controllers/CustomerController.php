@@ -13,7 +13,7 @@ class CustomerController extends Controller
         $customers = Customer::get();
         $userList = [];
         foreach ($customers as $customer) {
-            array_push($userList, $customer->user->name);
+            array_push($userList, array($customer->user->id, $customer->user->name));
         }
         return response()->json($userList,200);
     }
