@@ -15,5 +15,20 @@ $.ajax({
     .done(function (msg) {
         console.log("NAMES: ");
         console.log(msg);
-
     });
+   
+window.onload = function () {
+        hideClientSearchForm();
+    }
+    
+function showClientSearchForm() {
+    document.getElementById('clientSearchForm').removeAttribute('hidden');
+}
+
+function hideClientSearchForm() {
+    document.getElementById('clientSearchForm').setAttribute('hidden', true);
+}
+
+function searchClient() {
+    
+}
