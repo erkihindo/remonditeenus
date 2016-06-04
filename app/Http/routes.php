@@ -49,9 +49,15 @@ Route::get('/devices', [
     ]);
 Route::get('/adddevice', [
     'uses' => 'DeviceController@adddevice',
-    'as' => 'adddevice.create',
+    'as' => 'adddevice',
     'middleware' => 'employee'
     ]);
+Route::get('/addpart', [
+    'uses' => 'DevicePartsController@addPart',
+    'as' => 'addpart',
+    'middleware' => 'employee'
+    ]);
+
 Route::get('/invoices', [
     'uses' => 'InvoiceController@index',
     'middleware' => 'employee'
@@ -79,8 +85,13 @@ Route::post('/createrequest',[
     'uses' => 'ServiceRequestController@createRequest',
     'as' => 'servicerequest.create',
     'middleware' => 'employee'
-        
-        ]);
+    ]);
+
+Route::post('/createdevice', [
+    'uses' => 'DeviceController@createDevice',
+    'as' => 'device.create',
+    'middleware' => 'employee'
+    ]);
 
 Route::get('/getallcustomers', [
     'uses' => 'CustomerController@getAll',

@@ -21,6 +21,7 @@ class CreateDevicesTable extends Migration
             $table->string('description');
             $table->string('model');
             $table->string('manufacturer');
+            $table->timestamps();
             
         });
     }
