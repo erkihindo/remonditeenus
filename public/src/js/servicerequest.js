@@ -15,6 +15,19 @@ $.ajax({
     .done(function (msg) {
         console.log("NAMES: ");
         console.log(msg);
+        
+        $("#names").mSelectDBox({
+        "list": msg,
+
+         // enable multiple select
+         "multiple": false,
+
+           "autoComplete": true,
+         // Name of instance. 
+         "name": "b"
+
+
+       });  
     });
    
 window.onload = function () {
@@ -32,3 +45,4 @@ function hideClientSearchForm() {
 function searchClient() {
     
 }
+
