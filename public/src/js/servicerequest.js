@@ -6,3 +6,14 @@
 
 
 console.log("loaded servicerequest js");
+
+$.ajax({
+        method: 'GET',
+        url: urlToGetCustomers,
+        data: { _token: token}
+    })
+    .done(function (msg) {
+        console.log("NAMES: ");
+        console.log(msg);
+
+    });
