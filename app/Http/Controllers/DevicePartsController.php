@@ -13,4 +13,8 @@ class DevicePartsController extends Controller
     {
         dd("TODO");
     }
+    
+    public function addPart() {
+        return view('employee/addpart');
+    }
 }

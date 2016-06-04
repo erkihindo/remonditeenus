@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <form action="{{route('adddevice.create')}}" method="POST" style="margin-left: 14%">
+            <form action="{{route('device.create')}}" method="POST" style="margin-left: 14%">
                 <input type="hidden" value="{{ Session::token() }}" name="_token">
                 <table>
                     <tr>
@@ -12,23 +12,23 @@
                     </tr>
                     <tr>
                         <th>nimi</th>
-                        <td><input type="text" name="name"></td>
+                        <td><input type="text" name="name" required></td>
                     </tr>
                     <tr>
                         <th>mudel</th>
-                        <td><input type="text" name="model"></td>
+                        <td><input type="text" name="model" required></td>
                     </tr>
                     <tr>
                         <th>kirjeldus</th>
-                        <td><input type="text" name="description"></td>
+                        <td><input type="text" name="description" required></td>
                     </tr>
                     <tr>
                         <th>tootja</th>
-                        <td><input type="text" name="manufacturer"></td>
+                        <td><input type="text" name="manufacturer" required></td>
                     </tr>
                     <tr>
                         <th>seerianumber</th>
-                        <td><input type="text" name="serial_nr"></td>
+                        <td><input type="text" name="serial_nr" required></td>
                     </tr>
                     <tr>
                         <th>seadme tüüp</th>

@@ -65,6 +65,9 @@
                     <li><a href="{{ url('/adddevice') }}">Add dev</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/addpart') }}">Add part</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
                     <li><a href="{{ url('/invoices') }}">Check please</a></li>
                 </ul>
 
