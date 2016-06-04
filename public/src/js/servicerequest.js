@@ -42,7 +42,8 @@ function hideClientSearchForm() {
     document.getElementById('clientSearchForm').setAttribute('hidden', true);
 }
 
-function searchClient() {
-    
+function saveClient() {
+    var name = document.getElementById('names').value;
+    document.getElementById('name').innerHTML = name;
+    hideClientSearchForm();
 }
-

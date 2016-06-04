@@ -18,7 +18,7 @@ var urlToGetCustomers = '{{ route('getAllCustomers') }}';
                     </tr>
                     <tr>
                         <td>Klient:</td>
-                        <td><input type="button" value="Otsi klienti" onclick="showClientSearchForm()"></td>
+                        <td><span id="name"></span><input type="button" value="Otsi klienti" onclick="showClientSearchForm()"></td>
                     </tr>
                     <tr>
                         <td>Kliendi kirjeldus:</td>
@@ -43,7 +43,7 @@ var urlToGetCustomers = '{{ route('getAllCustomers') }}';
             <div id="clientSearchForm" >
                 Kliendi otsing<br>
                 Nimi:<input type="text" id="names"><br>
-                <button type="submit" onclick="">Lisa</button>
+                <button type="submit" onclick="saveClient()">Lisa</button>
             </div>
         </div>
     </div>
