@@ -9,7 +9,7 @@ var urlToGetCustomers = '{{ route('getAllCustomers') }}';
 
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-5 col-md-offset-2">
             <form action="{{route('servicerequest.create')}}" method="POST" style="margin-left: 14%">
                 <input type="hidden" value="{{ Session::token() }}" name="_token">
                 <table>
@@ -18,7 +18,7 @@ var urlToGetCustomers = '{{ route('getAllCustomers') }}';
                     </tr>
                     <tr>
                         <td>Klient:</td>
-                        <td><input type="button" value="Otsi klienti"></td>
+                        <td><input type="button" value="Otsi klienti" onclick="showClientSearchForm()"></td>
                     </tr>
                     <tr>
                         <td>Kliendi kirjeldus:</td>
@@ -29,10 +29,18 @@ var urlToGetCustomers = '{{ route('getAllCustomers') }}';
                         <td><textarea name="employee_desc"></textarea></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" value="Salvesta kliendi pöördumine"></td>
-                        <td><input type="button" value="Vormista tellimus"></td>
+                        <td><input type="button" value="Salvesta kliendi pöördumine"></td>
+                        <td><input type="submit" value="Vormista tellimus"></td>
                     </tr>
                 </table>
+            </form>
+            
+        </div>
+        <div class="col-md-5">
+            <form id="clientSearchForm" action="">
+                Kliendi otsing<br>
+                Nimi:<input type="text"><br>
+                <input type="submit" value="Otsi">
             </form>
         </div>
     </div>
