@@ -43,10 +43,12 @@ Route::get('/deviceparts', [
     ]);
 Route::get('/devices', [
     'uses' => 'DeviceController@alldevices',
+    'as' => 'devices',
     'middleware' => 'employee'
     ]);
 Route::get('/adddevice', [
     'uses' => 'DeviceController@adddevice',
+    'as' => 'adddevice.create',
     'middleware' => 'employee'
     ]);
 Route::get('/invoices', [
