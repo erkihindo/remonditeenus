@@ -20,7 +20,7 @@ class DeviceController extends Controller
         return view('employee/adddevice');
     }
     public function createDevice(Request $request) {
-        
+       
         $newDevice = new Device();
         $newDevice->name = $request->name;
         $newDevice->model = $request->model;
@@ -28,9 +28,9 @@ class DeviceController extends Controller
         $newDevice->description = $request->description;
         $newDevice->manufacturer = $request->manufacturer;
         $newDevice->device_type_id = $request->type;
-        
+       
         if($newDevice->save()) {
-            dd('saved new device');
+            return response()->json($newDevice,200);
         }
     }
     

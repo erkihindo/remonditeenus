@@ -141,6 +141,25 @@ function calculateTotal() {
     //ENTER TOTAL PRICE CALCULATION HERE
 }
 
+function createDevice() {
+    var device_name = document.getElementById("name1").value;
+    var model = document.getElementById("model1").value;
+    var serial_nr = document.getElementById("serial_nr1").value;
+    var manufacturer = document.getElementById("manufacturer1").value;
+    var device_type = document.getElementById("device_type1").value;
+    var description = document.getElementById("description1").value;
+    
+    $.ajax({
+    method: 'POST',
+    url: urlToCreateDevice,
+    data: {name: device_name,model: model, serial_nr: serial_nr,description: description ,manufacturer: manufacturer, type: device_type,  _token: token}
+    }).done(function (msg) {
+        console.log("Created new device: ");
+        console.log(msg);
+        
+    });
+}
+
 
 function searchForDevice() {
     console.log("searching");
