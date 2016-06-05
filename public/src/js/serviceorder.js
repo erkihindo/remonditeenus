@@ -209,5 +209,6 @@ function addToOrder(id) {
         option.text = msg;
         deviceDropdown.add(option);
     });
-    
+    hide('deviceSearchForm');
+    hide('searchResultDiv');
 }
