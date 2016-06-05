@@ -140,6 +140,18 @@ var urlToSearchDevices = '{{ route('finddevices') }}';
                 </table>
             </div>
         </div>
+        <div class="col-md-5">
+            Tulemus:<br>
+            @if (count($results > 0))
+            <ul>
+                @foreach($results as $result)
+                <li>{{ $result->name }} {{ $result->model }} {{ $result->reg_no }}<a href="javascript:addToOrder({{ $result->id }})">Lisa seade tellimusse</a></li>
+                @endforeach
+            </ul>
+            @else
+            Ei leitud midagi.
+            @endif
+        </div>
     </div>
 </div>
 <script src="{{ URL::to('src/js/serviceorder.js') }}"></script>
