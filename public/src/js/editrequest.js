@@ -49,7 +49,8 @@ function saveClient() {
     hideClientSearchForm();
 }
 
-function saveRequest() {
+function editRequest() {
+    var id = document.getElementById('id').value;
     var customer = document.getElementById('customer').value;
     var customer_desc = document.getElementById('customer_desc').value;
     var employee_desc = document.getElementById('employee_desc').value;
@@ -57,8 +58,8 @@ function saveRequest() {
     
     $.ajax({
         method: 'POST',
-        url: urlToSaveRequest,
-        data: {customer: customer,customer_desc: customer_desc, employee_desc: employee_desc, status_type:status_type,  _token: token}
+        url: urlToUpdateRequest,
+        data: {id: id, customer: customer,customer_desc: customer_desc, employee_desc: employee_desc, status_type:status_type,  _token: token}
     })
     .done(function (msg) {
         console.log("SAVED: ");

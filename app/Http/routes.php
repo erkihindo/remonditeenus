@@ -13,7 +13,8 @@
 
 Route::get('/', [
     'uses' => 'HomeController@index',
-    'middleware' => 'auth'
+    'middleware' => 'auth',
+    'as' => '/'
     ]);
 
 Route::auth();
@@ -62,10 +63,20 @@ Route::get('/serviceorders', [
     'as' => 'serviceorder.create',
     'middleware' => 'employee'
     ]);
+Route::get('/allservicerequests', [
+    'uses' => 'ServiceRequestController@allRequests',
+    'as' => 'allservicerequests', 
+    'middleware' => 'employee'
+    ]);
 
 Route::get('/servicerequest', [
-    'uses' => 'ServiceRequestController@index',
+    'uses' => 'ServiceRequestController@newRequest',
     'as' => 'servicerequest', 
+    'middleware' => 'employee'
+    ]);
+
+Route::get('/servicerequest/{id}', [
+    'uses' => 'ServiceRequestController@editRequest',
     'middleware' => 'employee'
     ]);
 
@@ -79,6 +90,18 @@ Route::get('/serviceorder/{servicerequest}', [
 Route::post('/createrequest',[
     'uses' => 'ServiceRequestController@createRequest',
     'as' => 'servicerequest.create',
+    'middleware' => 'employee'
+    ]);
+
+Route::post('/saverequest',[
+    'uses' => 'ServiceRequestController@saveRequest',
+    'as' => 'saverequest',
+    'middleware' => 'employee'
+    ]);
+
+Route::post('/updaterequest',[
+    'uses' => 'ServiceRequestController@updateRequest',
+    'as' => 'updaterequest',
     'middleware' => 'employee'
     ]);
 
