@@ -9,6 +9,7 @@ var urlToGetServiceTypes = '{{ route('getservicetypes') }}';
 var urlToGetDeviceTypes = '{{ route('getdevicetypes') }}';
 
 var urlToSearchDevices = '{{ route('finddevices') }}';
+var urlToCreateDevice = '{{ route('createdevice') }}';
 </script>
 <div class="container">
     <div class="row">
@@ -99,7 +100,7 @@ var urlToSearchDevices = '{{ route('finddevices') }}';
                         <td><select name="type" id="device_type1"></select></td>
                     </tr>
                     <tr>
-                        <td><button type="submit" onclick="lisaDev()">Lisa</button></td>
+                        <td><button type="submit" onclick="createDevice()">Lisa</button></td>
                     </tr>
                 </table>
             </div>

@@ -84,7 +84,7 @@ Route::post('/createrequest',[
 
 Route::post('/createdevice', [
     'uses' => 'DeviceController@createDevice',
-    'as' => 'device.create',
+    'as' => 'createdevice',
     'middleware' => 'employee'
     ]);
 
