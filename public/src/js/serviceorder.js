@@ -24,7 +24,7 @@ function showDeviceAddForm() {
 function hideDeviceAddForm() {
     document.getElementById('deviceAddForm').setAttribute('hidden', true);
 }
-
+//tellimuse staatus
 $.ajax({
     method: 'GET',
     url: urlToGetSoStatusTypes,
@@ -36,13 +36,14 @@ $.ajax({
     var dropdown = document.getElementById("order_status");
     for(var i=0; i<msg.length; i++) {
         var option = document.createElement("option");
-        option.text = msg[i];
+        option.text = msg[i][1];
+        option.value = msg[i][0];
         dropdown.add(option);
     }
  
 });
 
-
+//teenus
 $.ajax({
     method: 'GET',
     url: urlToGetServiceTypes,
@@ -55,7 +56,8 @@ $.ajax({
     servicedropdown = document.getElementById("service_types");
     for(var i=0; i<services.length; i++) {
         var option = document.createElement("option");
-        option.text = services[i][0];
+        option.text = services[i][1];
+        option.value = services[i][0];
         servicedropdown.add(option);
     }
     
@@ -70,22 +72,22 @@ $.ajax({
         calculateTotal();
     });
     
-    document.getElementById("unit_price1").value = services[0][2];
-    document.getElementById("unit_type1").innerHTML = services[0][1];
+    document.getElementById("unit_price1").value = services[0][3];
+    document.getElementById("unit_type1").innerHTML = services[0][2];
     
  
 });
 
 function changeUnits() {
-    if(servicedropdown.value == "Kerge töö") {
-        document.getElementById("unit_price1").value = services[0][2];
-    document.getElementById("unit_type1").innerHTML = services[0][1];
-    } else if(servicedropdown.value == "Keskmine töö") {
-        document.getElementById("unit_price1").value = services[1][2];
-    document.getElementById("unit_type1").innerHTML = services[1][1];
+    if(servicedropdown.value == 1) {
+        document.getElementById("unit_price1").value = services[0][3];
+    document.getElementById("unit_type1").innerHTML = services[0][2];
+    } else if(servicedropdown.value == 2) {
+        document.getElementById("unit_price1").value = services[1][3];
+    document.getElementById("unit_type1").innerHTML = services[1][2];
     } else {
-        document.getElementById("unit_price1").value = services[2][2];
-    document.getElementById("unit_type1").innerHTML = services[2][1];
+        document.getElementById("unit_price1").value = services[2][3];
+    document.getElementById("unit_type1").innerHTML = services[2][2];
     }
 }
 function calculateTotal() {

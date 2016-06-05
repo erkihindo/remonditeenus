@@ -1,6 +1,12 @@
 @extends('layouts.employeeapp')
 
 @section('content')
+
+<script>
+var token = '{{ Session::token() }}';
+var urlToGetTypes = '{{ route('getdevicetypes') }}';
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -32,7 +38,7 @@
                     </tr>
                     <tr>
                         <th>seadme tüüp</th>
-                        <td><select name="type"></select></td>
+                        <td><select name="type" id="type"></select></td>
                     </tr>
                     <tr>
                         <td><input type="submit" value="Lisa"></td>
@@ -43,5 +49,5 @@
     </div>
 </div>
 
-<script src="{{ URL::to('src/js/servicerequest.js') }}"></script>
+<script src="{{ URL::to('src/js/adddevice.js') }}"></script>
 @endsection

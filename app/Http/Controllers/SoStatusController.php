@@ -14,7 +14,7 @@ class SoStatusController extends Controller
         $typeList = [];
         
         foreach ($types as $type) {
-            array_push($typeList,  $type->type_name);
+            array_push($typeList,  array($type->id, $type->type_name));
         }
         return response()->json($typeList,200);
     
