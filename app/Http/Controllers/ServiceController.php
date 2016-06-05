@@ -14,7 +14,7 @@ class ServiceController extends Controller
         $services = Service_type::get();
         $serviceList = [];
         foreach ($services as $service) {
-            array_push($serviceList,  array($service->type_name, $service->service_unit_type->type_name, $service->service_price));
+            array_push($serviceList,  array($service->id, $service->type_name, $service->service_unit_type->type_name, $service->service_price));
         }
         return response()->json($serviceList,200);
     }

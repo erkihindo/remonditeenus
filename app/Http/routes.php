@@ -110,3 +110,9 @@ Route::get('/getservicetypes', [
     'as' => 'getservicetypes', 
     'middleware' => 'employee'
     ]);
+
+Route::get('/getdevicetypes', [
+    'uses' => 'DeviceController@getTypes',
+    'as' => 'getdevicetypes', 
+    'middleware' => 'employee'
+    ]);

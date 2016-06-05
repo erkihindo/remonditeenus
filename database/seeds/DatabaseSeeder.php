@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
          $this->call(ServiceUnitTypeSeeder::class);
          
          $this->call(ServiceTypeSeeder::class);
-          
+         $this->call(DeviceTypeSeeder::class);
     }
 }
