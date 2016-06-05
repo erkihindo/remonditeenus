@@ -116,3 +116,9 @@ Route::get('/getdevicetypes', [
     'as' => 'getdevicetypes', 
     'middleware' => 'employee'
     ]);
+
+Route::get('/finddevices', [
+    'uses' => 'DeviceController@searchForDevices',
+    'as' => 'finddevices', 
+    'middleware' => 'employee'
+    ]);
