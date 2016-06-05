@@ -184,7 +184,7 @@ function searchForDevice() {
             printout += devicesfound[i].name;
             printout += ' ' + devicesfound[i].model;
             printout += ' ' + devicesfound[i].reg_no;
-            printout += ' ' + '<a href="javascript:addToOrder(' + devicesfound[i].id + ', ' + devicesfound[i].name + ');" target="_self">lisa tellimusele</a>';
+            printout += ' ' + '<a href="javascript:addToOrder(' + devicesfound[i].id + ');" target="_self">lisa tellimusele</a>';
             printout += '</li>';
         }
         document.getElementById("search_result").innerHTML = printout;
@@ -193,12 +193,22 @@ function searchForDevice() {
     
 }
 
-function addToOrder(id, name) {
+function addToOrder(id) {
+    console.log("Adding to order");
     var deviceDropdown = document.getElementById("device");
     var option = document.createElement("option");
-    option.text = name;
     option.value = id;
-    deviceDropdown.add(option);
-    hide('searchResultDiv');
+    
+    
+        $.ajax({
+        method: 'GET',
+        url: urlToGetDeviceName,
+        data: {id: id, _token: token}
+    })
+    .done(function (msg) {
+        option.text = msg;
+        deviceDropdown.add(option);
+    });
     hide('deviceSearchForm');
+    hide('searchResultDiv');
 }

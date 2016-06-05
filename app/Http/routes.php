@@ -123,3 +123,8 @@ Route::post('/createpart', [
     'as' => 'part.create',
     'middleware' => 'employee'
     ]);
+Route::get('/getdevicename', [
+    'uses' => 'DeviceController@findByID',
+    'as' => 'getdevicename', 
+    'middleware' => 'employee'
+    ]);
