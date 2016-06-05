@@ -6,24 +6,25 @@ window.onload = function () {
         hideDeviceSearchForm();
         hideDeviceAddForm();
 };
-    
-function showDeviceSearchForm() {
-    hideDeviceAddForm();
-    document.getElementById('deviceSearchForm').removeAttribute('hidden');
+
+function show(id) {
+    document.getElementById(id).removeAttribute('hidden');
 }
 
-function hideDeviceSearchForm() {
-    document.getElementById('deviceSearchForm').setAttribute('hidden', true);
+function hide(id) {
+    document.getElementById(id).setAttribute('hidden', true);
+}
+    
+function showDeviceSearchForm() {
+    hide('deviceAddForm');
+    show('deviceSearchForm');
 }
 
 function showDeviceAddForm() {
-    hideDeviceSearchForm();
-    document.getElementById('deviceAddForm').removeAttribute('hidden');
+    hide('deviceSearchForm');
+    show('deviceAddForm');
 }
 
-function hideDeviceAddForm() {
-    document.getElementById('deviceAddForm').setAttribute('hidden', true);
-}
 //Seadme tüüp
 $.ajax({
     method: 'GET',
