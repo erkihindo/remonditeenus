@@ -6,6 +6,9 @@
 var token = '{{ Session::token() }}';
 var urlToGetSoStatusTypes = '{{ route('getsostatustypes') }}';
 var urlToGetServiceTypes = '{{ route('getservicetypes') }}';
+var urlToGetDeviceTypes = '{{ route('getdevicetypes') }}';
+
+var urlToSearchDevices = '{{ route('finddevices') }}';
 </script>
 <div class="container">
     <div class="row">
@@ -108,26 +111,31 @@ var urlToGetServiceTypes = '{{ route('getservicetypes') }}';
                     </tr>
                     <tr>
                         <th>nimi</th>
-                        <td><input type="text" name="device_name"></td>
+                        <td><input type="text" id="device_name"></td>
                     </tr>
                     <tr>
                         <th>mudel</th>
-                        <td><input type="text" name="model"></td>
+                        <td><input type="text" id="model"></td>
                     </tr>
                     <tr>
                         <th>seerianumber</th>
-                        <td><input type="text" name="serial_nr"></td>
+                        <td><input type="text" id="serial_nr"></td>
+                    </tr>
+                    <tr>
+                        <th>tootja</th>
+                        <td><input type="text" id="manufacturer"></td>
                     </tr>
                     <tr>
                         <th>seadme tüüp</th>
-                        <td><select name="type"></select></td>
+                        <td><select name="type" id="device_type"></select></td>
                     </tr>
                     <tr>
                         <th>kliendi nimi</th>
-                        <td><input type="text" name="client_name"></td>
+                        <td><input type="text" id="client_name"></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" value="Otsi"></td>
+                        <td><button type="submit" onClick="searchForDevice()">Otsi
+                        </td>
                     </tr>
                 </table>
             </form>

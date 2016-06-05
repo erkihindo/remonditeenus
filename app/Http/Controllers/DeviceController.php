@@ -55,4 +55,14 @@ class DeviceController extends Controller
         
         return response()->json($orderedTypes,200);
     }
+    
+    public function searchForDevices(Request $request) {
+        $search = Device::where('name', 'LIKE', "%$request->device_name%")
+                ->where('reg_no', 'LIKE', "%$request->serial_nr%")
+                ->where('model', 'LIKE', "%$request->model%")
+                ->where('manufacturer', 'LIKE', "%$request->manufacturer%")
+                ->where('device_type_id', $request->device_type)
+                ->get();
+        return response()->json($search,200);
+    }
 }
