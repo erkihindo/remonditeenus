@@ -24,6 +24,26 @@ function showDeviceAddForm() {
 function hideDeviceAddForm() {
     document.getElementById('deviceAddForm').setAttribute('hidden', true);
 }
+//Seadme tüüp
+$.ajax({
+    method: 'GET',
+    url: urlToGetDeviceTypes,
+    data: { _token: token}
+})
+.done(function (msg) {
+    console.log("Device types: ");
+    console.log(msg);
+    var dropdown = document.getElementById("device_type");
+    for(var i=0; i<msg.length; i++) {
+        var option = document.createElement("option");
+        option.text = msg[i][1];
+        option.value = msg[i][0];
+        dropdown.add(option);
+    }
+ 
+});
+
+
 //tellimuse staatus
 $.ajax({
     method: 'GET',
@@ -95,4 +115,29 @@ function calculateTotal() {
     //ENTER PART PRICE CALCULATION HERE
     
     //ENTER TOTAL PRICE CALCULATION HERE
+}
+
+
+function searchForDevice() {
+    console.log("searching");
+    var device_name = document.getElementById("device_name").value;
+    var model = document.getElementById("model").value;
+    var serial_nr = document.getElementById("serial_nr").value;
+    var manufacturer = document.getElementById("manufacturer").value;
+    var device_type = document.getElementById("device_type").value;
+    var client_name = document.getElementById("client_name").value;
+    
+    
+    
+    $.ajax({
+    method: 'GET',
+    url: urlToSearchDevices,
+    data: {device_name: device_name,model: model, serial_nr: serial_nr,manufacturer: manufacturer, device_type: device_type,client_name: client_name,  _token: token}
+    }).done(function (msg) {
+        console.log("Searched: ");
+        console.log(msg);
+        
+
+    });
+    
 }
