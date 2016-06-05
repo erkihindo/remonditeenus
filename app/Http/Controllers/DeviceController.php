@@ -88,4 +88,11 @@ class DeviceController extends Controller
         
         return response()->json($deviceList,200);
     }
+    
+    public function findByID(Request $request) {
+       
+        $device = Device::find($request->id);
+        
+        return response()->json($device->name,200);
+    }
 }
