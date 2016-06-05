@@ -3,8 +3,10 @@ var servicedropdown;
 var serviceamount;
 
 window.onload = function () {
+        /*
         hideDeviceSearchForm();
         hideDeviceAddForm();
+        */
 };
 
 function show(id) {
@@ -34,13 +36,22 @@ $.ajax({
 .done(function (msg) {
     console.log("Device types: ");
     console.log(msg);
-    var dropdown = document.getElementById("device_type");
+    var dropdown1 = document.getElementById("device_type1");
     for(var i=0; i<msg.length; i++) {
-        var option = document.createElement("option");
-        option.text = msg[i][1];
-        option.value = msg[i][0];
-        dropdown.add(option);
+        var option1 = document.createElement("option");
+        option1.text = msg[i][1];
+        option1.value = msg[i][0];
+        dropdown1.add(option1);
     }
+    
+    var dropdown2 = document.getElementById("device_type2");
+    for(var i=0; i<msg.length; i++) {
+        var option2 = document.createElement("option");
+        option2.text = msg[i][1];
+        option2.value = msg[i][0];
+        dropdown2.add(option2);
+    }
+    
  
 });
 
@@ -61,6 +72,18 @@ $.ajax({
         option.value = msg[i][0];
         dropdown.add(option);
     }
+    if(dropdown.value != 3) {
+        document.getElementById("arve_nupp").style.display = 'none';
+    }
+    dropdown.addEventListener("change", function() {
+        console.log("Changed order status " + dropdown.text);
+        if(dropdown.value == 3) {
+            document.getElementById("arve_nupp").style.display = 'block';
+        } else {
+            document.getElementById("arve_nupp").style.display = 'none';
+        }
+    });
+    
  
 });
 
@@ -121,12 +144,12 @@ function calculateTotal() {
 
 function searchForDevice() {
     console.log("searching");
-    var device_name = document.getElementById("device_name").value;
-    var model = document.getElementById("model").value;
-    var serial_nr = document.getElementById("serial_nr").value;
-    var manufacturer = document.getElementById("manufacturer").value;
-    var device_type = document.getElementById("device_type").value;
-    var client_name = document.getElementById("client_name").value;
+    var device_name = document.getElementById("device_name2").value;
+    var model = document.getElementById("model2").value;
+    var serial_nr = document.getElementById("serial_nr2").value;
+    var manufacturer = document.getElementById("manufacturer2").value;
+    var device_type = document.getElementById("device_type2").value;
+    var client_name = document.getElementById("client_name2").value;
     
     
     
@@ -134,11 +157,11 @@ function searchForDevice() {
     method: 'GET',
     url: urlToSearchDevices,
     data: {device_name: device_name,model: model, serial_nr: serial_nr,manufacturer: manufacturer, device_type: device_type,client_name: client_name,  _token: token}
-    }).done(function (msg) {
+    }).done(function (devicesfound) {
         console.log("Searched: ");
-        console.log(msg);
+        console.log(devicesfound);
         
-
+        document.getElementById("search_result").innerHTML = devicesfound;
     });
     
 }
