@@ -21,8 +21,9 @@ var urlToSearchDevices = '{{ route('finddevices') }}';
                     </tr>
                     <tr>
                         <td colspan="2">Vali tellimuse seade:</td>
+                        <td><select name="device"></select></td>
                         <td><input type="button" value="Otsi seadet" onclick="showDeviceSearchForm()"></td>
-                        <td><input type="button" value="Lisa uus seade" onclick="showDeviceAddForm()"></td>
+                        <td colspan="2"><input type="button" value="Lisa uus seade" onclick="showDeviceAddForm()"></td>
                     </tr>
                     <tr>
                         <td colspan="2">Summa kokku:</td>
@@ -59,7 +60,7 @@ var urlToSearchDevices = '{{ route('finddevices') }}';
                     <tr>
                         <td>tellimuse staatus:</td>
                         <td><select name="order_status" id="order_status"></select></td>
-                        <td><input type="button" value="Salvesta tellimus"></td>
+                        <td colspan="2"><input type="button" value="Salvesta tellimus"></td>
                         <td><input type="submit" value="Tee arve"></td>
                     </tr>
                 </table>
