@@ -22,7 +22,7 @@ class HomeController extends Controller
          $user = Auth::user();
         if($user->employee != null) {
             
-            return redirect()-> route('servicerequest');
+            return redirect()-> route('allservicerequests');
         } else if($user->customer != null)  {
             return redirect()-> route('customerorders');
             
