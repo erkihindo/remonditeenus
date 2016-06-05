@@ -61,7 +61,7 @@ var urlToSearchDevices = '{{ route('finddevices') }}';
                         <td>tellimuse staatus:</td>
                         <td><select name="order_status" id="order_status"></select></td>
                         <td colspan="2"><input type="button" value="Salvesta tellimus"></td>
-                        <td><input type="submit" value="Tee arve"></td>
+                        <td><input type="submit" value="Tee arve" id="arve_nupp"></td>
                     </tr>
                 </table>
             </form>
@@ -69,40 +69,40 @@ var urlToSearchDevices = '{{ route('finddevices') }}';
     </div>
     <div class="row">
         <div class="col-md-3" id="deviceAddForm">
-            <form action="">
+            <div action="">
                 <table>
                     <tr>
                         <td colspan="2">SEADME LISAMINE</td>
                     </tr>
                     <tr>
                         <th>nimi</th>
-                        <td><input type="text" name="name"></td>
+                        <td><input type="text" name="name" id="name1"></td>
                     </tr>
                     <tr>
                         <th>mudel</th>
-                        <td><input type="text" name="model"></td>
+                        <td><input type="text" name="model" id="model1"></td>
                     </tr>
                     <tr>
                         <th>kirjeldus</th>
-                        <td><input type="text" name="description"></td>
+                        <td><input type="text" name="description" id="description1"></td>
                     </tr>
                     <tr>
                         <th>tootja</th>
-                        <td><input type="text" name="manufacturer"></td>
+                        <td><input type="text" name="manufacturer" id="manufacturer1"></td>
                     </tr>
                     <tr>
                         <th>seerianumber</th>
-                        <td><input type="text" name="serial_nr"></td>
+                        <td><input type="text" name="serial_nr" id="serial_nr1"></td>
                     </tr>
                     <tr>
                         <th>seadme tüüp</th>
-                        <td><select name="type"></select></td>
+                        <td><select name="type" id="device_type1"></select></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" value="Lisa"></td>
+                        <td><button type="submit" onclick="lisaDev()">Lisa</button></td>
                     </tr>
                 </table>
-            </form>
+            </div>
         </div>
         <div class="col-md-3" id="deviceSearchForm">
             <div>
@@ -112,27 +112,27 @@ var urlToSearchDevices = '{{ route('finddevices') }}';
                     </tr>
                     <tr>
                         <th>nimi</th>
-                        <td><input type="text" id="device_name"></td>
+                        <td><input type="text" id="device_name2"></td>
                     </tr>
                     <tr>
                         <th>mudel</th>
-                        <td><input type="text" id="model"></td>
+                        <td><input type="text" id="model2"></td>
                     </tr>
                     <tr>
                         <th>seerianumber</th>
-                        <td><input type="text" id="serial_nr"></td>
+                        <td><input type="text" id="serial_nr2"></td>
                     </tr>
                     <tr>
                         <th>tootja</th>
-                        <td><input type="text" id="manufacturer"></td>
+                        <td><input type="text" id="manufacturer2"></td>
                     </tr>
                     <tr>
                         <th>seadme tüüp</th>
-                        <td><select name="type" id="device_type"></select></td>
+                        <td><select name="type" id="device_type2"></select></td>
                     </tr>
                     <tr>
                         <th>kliendi nimi</th>
-                        <td><input type="text" id="client_name"></td>
+                        <td><input type="text" id="client_name2"></td>
                     </tr>
                     <tr>
                         <td><button type="submit" onClick="searchForDevice()">Otsi</td>
@@ -143,7 +143,7 @@ var urlToSearchDevices = '{{ route('finddevices') }}';
         <div class="col-md-5">
             Tulemus:<br>
             <span id="search_result">
-                
+                Enter result here
             </span>
         </div>
     </div>

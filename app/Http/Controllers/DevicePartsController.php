@@ -9,12 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class DevicePartsController extends Controller
 {
-    public function index()
-    {
-        dd("TODO");
-    }
+    
     
     public function addPart() {
-        return view('employee/addpart');
+        
+        
+        return response()->json("TODO",200);
     }
 }

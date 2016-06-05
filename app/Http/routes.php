@@ -52,11 +52,6 @@ Route::get('/adddevice', [
     'as' => 'adddevice',
     'middleware' => 'employee'
     ]);
-Route::get('/addpart', [
-    'uses' => 'DevicePartsController@addPart',
-    'as' => 'addpart',
-    'middleware' => 'employee'
-    ]);
 
 Route::get('/invoices', [
     'uses' => 'InvoiceController@index',
@@ -120,5 +115,11 @@ Route::get('/getdevicetypes', [
 Route::get('/finddevices', [
     'uses' => 'DeviceController@searchForDevices',
     'as' => 'finddevices', 
+    'middleware' => 'employee'
+    ]);
+
+Route::post('/createpart', [
+    'uses' => 'DevicePartsController@createPart',
+    'as' => 'part.create',
     'middleware' => 'employee'
     ]);
