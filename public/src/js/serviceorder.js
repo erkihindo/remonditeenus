@@ -50,8 +50,6 @@ $.ajax({
         option2.value = msg[i][0];
         dropdown2.add(option2);
     }
-    
- 
 });
 
 
@@ -82,8 +80,6 @@ $.ajax({
             document.getElementById("arve_nupp").style.display = 'none';
         }
     });
-    
- 
 });
 
 //teenus
@@ -107,18 +103,20 @@ $.ajax({
     servicedropdown.addEventListener("change", function() {
         console.log("Changed service " + servicedropdown.value);
         changeUnits();
-        calculateTotal();
+        calculateTotal(1, 'service');
     });
     serviceamount = document.getElementById("amount1");
     serviceamount.addEventListener("change", function() {
         console.log("Changed amount " + serviceamount.value);
-        calculateTotal();
+        calculateTotal(1, 'service');
     });
     
-    document.getElementById("unit_price1").value = services[0][3];
+    unit_price = document.getElementById("unit_price1");
+    unit_price.value = services[0][3];
+    unit_price.addEventListener("change", function() {
+        calculateTotal(1, 'service');
+    });
     document.getElementById("unit_type1").innerHTML = services[0][2];
-    
- 
 });
 
 function changeUnits() {
@@ -133,11 +131,13 @@ function changeUnits() {
     document.getElementById("unit_type1").innerHTML = services[2][2];
     }
 }
-function calculateTotal() {
-    document.getElementById("total_price1").value = serviceamount.value * document.getElementById("unit_price1").value;
-    //ENTER PART PRICE CALCULATION HERE
-    
-    //ENTER TOTAL PRICE CALCULATION HERE
+function calculateTotal(rowNo, rowType) {
+    if (rowType == 'service') {
+        document.getElementById("total_price" + rowNo).value = serviceamount.value * document.getElementById("unit_price" + rowNo).value;
+    } else {
+        document.getElementById("total_price" + rowNo).value = document.getElementById("unit_price" + rowNo).value * document.getElementById("amount" + rowNo).value;
+    }
+    document.getElementById("total").innerHTML = parseInt(document.getElementById('total_price1').value) + parseInt(document.getElementById('total_price2').value);
 }
 
 function createDevice() {

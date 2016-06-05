@@ -29,7 +29,7 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
                     </tr>
                     <tr>
                         <td colspan="2">Summa kokku:</td>
-                        <td>{{ $servicerequest->total_order_price }}</td>
+                        <td><span id="total">0</span></td>
                     </tr>
                     <tr>
                         <td>Töö:</td>
@@ -42,18 +42,18 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
                         <td>ühiku hind:</td>
                         <td><input type="number" name="unit_price1" id="unit_price1"></td>
                         <td>hind kokku:</td>
-                        <td><input type="number" name="total_price1" id="total_price1" disabled></td>
+                        <td><input type="number" name="total_price1" id="total_price1" disabled value="0"></td>
                     </tr>
                     <tr>
                         <td>Osa:</td>
                         <td colspan="3"><input type="text" name="part"></textarea></td>
                         <td>kogus:</td>
-                        <td><input type="number" name="amount2"></td>
+                        <td><input type="number" name="amount2" id="amount2" onchange="calculateTotal(2, 'part');"></td>
                         <td>[tk]</td>
                         <td>ühiku hind:</td>
-                        <td><input type="number" name="unit_price2"></td>
+                        <td><input type="number" name="unit_price2" id="unit_price2" onchange="calculateTotal(2, 'part');"></td>
                         <td>hind kokku:</td>
-                        <td><input type="number" name="total_price2" disabled></td>
+                        <td><input type="number" name="total_price2" id="total_price2" disabled value="0"></td>
                     </tr>
                     <tr>
                         <td><a href="">Lisa töö</a></td>
