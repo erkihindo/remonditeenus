@@ -105,7 +105,7 @@ var urlToSearchDevices = '{{ route('finddevices') }}';
             </form>
         </div>
         <div class="col-md-3" id="deviceSearchForm">
-            <form action="">
+            <div>
                 <table>
                     <tr>
                         <td colspan="2">SEADME OTSING</td>
@@ -135,11 +135,10 @@ var urlToSearchDevices = '{{ route('finddevices') }}';
                         <td><input type="text" id="client_name"></td>
                     </tr>
                     <tr>
-                        <td><button type="submit" onClick="searchForDevice()">Otsi
-                        </td>
+                        <td><button type="submit" onClick="searchForDevice()">Otsi</td>
                     </tr>
                 </table>
-            </form>
+            </div>
         </div>
     </div>
 </div>
