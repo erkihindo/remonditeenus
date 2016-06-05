@@ -53,6 +53,9 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/allservicerequests') }}">All requests</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
                     <li><a href="{{ url('/servicerequest') }}">New request</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
