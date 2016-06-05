@@ -57,12 +57,35 @@ class DeviceController extends Controller
     }
     
     public function searchForDevices(Request $request) {
-        $search = Device::where('name', 'LIKE', "%$request->device_name%")
+        
+        $allTypes = Device_type::where('id', $request->device_type)->get();
+        $allTypes = $allTypes->toArray();
+        
+        for($i = 0; $i < sizeof($allTypes); $i++) {
+            
+            $childTypes = Device_type::where('super_type_id', $allTypes[$i]['id'])->get();
+          
+            if($childTypes != null) {
+                $childTypes = $childTypes->toArray();      
+                array_splice( $allTypes, $i+1, 0, $childTypes );
+                
+            }
+        }
+        
+        $deviceList = [];
+        foreach($allTypes as $type) {
+            $search = Device::where('name', 'LIKE', "%$request->device_name%")
                 ->where('reg_no', 'LIKE', "%$request->serial_nr%")
                 ->where('model', 'LIKE', "%$request->model%")
                 ->where('manufacturer', 'LIKE', "%$request->manufacturer%")
-                ->where('device_type_id', $request->device_type)
+                ->where('device_type_id', $type['id'])
                 ->get();
-        return response()->json($search,200);
+            if(sizeof($search)>0) {
+                array_push($deviceList, $search[0]);
+            }
+            
+        }
+        
+        return response()->json($deviceList,200);
     }
 }
