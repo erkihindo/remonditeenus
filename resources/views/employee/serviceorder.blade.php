@@ -51,6 +51,7 @@ var urlToGetServiceTypes = '{{ route('getservicetypes') }}';
                     </tr>
                     <tr>
                         <td><a href="">Lisa töö</a></td>
+                        <td><a href="">Lisa osa</a></td>
                     </tr>
                     <tr>
                         <td>tellimuse staatus:</td>
@@ -63,7 +64,7 @@ var urlToGetServiceTypes = '{{ route('getservicetypes') }}';
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6" id="deviceAddForm">
+        <div class="col-md-3" id="deviceAddForm">
             <form action="">
                 <table>
                     <tr>
@@ -99,7 +100,7 @@ var urlToGetServiceTypes = '{{ route('getservicetypes') }}';
                 </table>
             </form>
         </div>
-        <div class="col-md-6" id="deviceSearchForm">
+        <div class="col-md-3" id="deviceSearchForm">
             <form action="">
                 <table>
                     <tr>
