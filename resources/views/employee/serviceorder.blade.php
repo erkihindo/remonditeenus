@@ -141,11 +141,11 @@ var urlToCreateDevice = '{{ route('createdevice') }}';
                 </table>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6" id="searchResultDiv">
             Tulemus:<br>
-            <span id="search_result">
-                Enter result here
-            </span>
+            <ul>
+                <span id="search_result"></span>
+            </ul>
         </div>
     </div>
 </div>

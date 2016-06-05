@@ -3,10 +3,9 @@ var servicedropdown;
 var serviceamount;
 
 window.onload = function () {
-        /*
-        hideDeviceSearchForm();
-        hideDeviceAddForm();
-        */
+        hide('deviceAddForm');
+        hide('deviceSearchForm');
+        hide('searchResultDiv');
 };
 
 function show(id) {
@@ -179,8 +178,25 @@ function searchForDevice() {
     }).done(function (devicesfound) {
         console.log("Searched: ");
         console.log(devicesfound);
-        
-        document.getElementById("search_result").innerHTML = devicesfound;
+        var printout = "";
+        for (var i = 0; i < devicesfound.length; i++) {
+            printout += '<li>';
+            printout += devicesfound[i].name;
+            printout += ' ' + devicesfound[i].model;
+            printout += ' ' + devicesfound[i].reg_no;
+            printout += ' ' + '<a href="javascript:addToOrder(' + devicesfound[i] + ');" target="_self">lisa tellimusele</a>';
+            printout += '</li>';
+        }
+        document.getElementById("search_result").innerHTML = printout;
+        show('searchResultDiv');
     });
     
+}
+
+function addToOrder(device) {
+    var deviceDropdown = document.getElementById("device");
+    var option = document.createElement("option");
+    option.text = device.name;
+    option.value = device.id;
+    deviceDropdown.add(option);
 }
