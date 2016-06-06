@@ -54,7 +54,7 @@ Route::get('/adddevice', [
     'middleware' => 'employee'
     ]);
 
-Route::get('/invoices', [
+Route::get('/invoice', [
     'uses' => 'InvoiceController@index',
     'middleware' => 'employee'
     ]);

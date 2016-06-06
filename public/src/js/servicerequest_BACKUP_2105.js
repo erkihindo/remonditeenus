@@ -58,6 +58,7 @@ function saveRequest() {
     var employee_desc = document.getElementById('employee_desc').value;
     var status_type = checkbox.checked;
     
+    
     $.ajax({
         method: 'POST',
         url: urlToSaveRequest,
@@ -69,6 +70,9 @@ function saveRequest() {
         window.location.href = urlToHome;
         
     });
+<<<<<<< HEAD
+}
+=======
 }    
 
 checkbox.change(function(event) {
@@ -88,3 +92,4 @@ name.change(function(event) {
         document.getElementById('submitButton').setAttribute('disabled', true);
     }
 });
+>>>>>>> da08faf59a8aea2dd53d2ac30dccfe33657d4e66

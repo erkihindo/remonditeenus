@@ -36,7 +36,7 @@ var urlToHome = '{{ route('/') }}';
                     </tr>
                     <tr>
                         <td><input type="button" onclick="saveRequest()" value="Salvesta kliendi pöördumine"></td>
-                        <td><input type="submit" value="Vormista tellimus"></td>
+                        <td><input type="submit" value="Vormista tellimus" id="submitButton" disabled></td>
                     </tr>
                 </table>
             </form>
