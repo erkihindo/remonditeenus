@@ -158,12 +158,15 @@ function populateServiceDropdown(rowNo) {
 function changeUnits(rowNo) {
     var servicedropdown = document.getElementById("service_types" + rowNo);
     if(servicedropdown.value == 1) {
+        if(document.getElementById("unit_price" + rowNo).value<1)
         document.getElementById("unit_price" + rowNo).value = service_types[0][3];
         document.getElementById("unit_type" + rowNo).innerHTML = service_types[0][2];
     } else if(servicedropdown.value == 2) {
+        if(document.getElementById("unit_price" + rowNo).value<1)
         document.getElementById("unit_price" + rowNo).value = service_types[1][3];
         document.getElementById("unit_type" + rowNo).innerHTML = service_types[1][2];
     } else {
+        if(document.getElementById("unit_price" + rowNo).value<1)
         document.getElementById("unit_price" + rowNo).value = service_types[2][3];
         document.getElementById("unit_type" + rowNo).innerHTML = service_types[2][2];
     }
