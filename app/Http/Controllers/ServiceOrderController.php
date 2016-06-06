@@ -25,11 +25,19 @@ class ServiceOrderController extends Controller
         $maxID = Service_order::max('id');
         $newID = $maxID +1;
         
+        $oldOrder = Service_order::where('service_request_id', $servicerequest)->first();
+        
+        
         return view('employee/serviceorder', 
             ['newID' => $newID,
             'servicerequest' => $request,
-                
+             'oldOrder' => $oldOrder,   
                 ]);
+    }
+    
+    public function getAll() {
+        $orders = Service_order::get();
+        return view('employee/allserviceorders', ['orders' => $orders]);
     }
     
     public function viewCustomerOrders() {

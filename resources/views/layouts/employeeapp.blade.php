@@ -59,7 +59,7 @@
                     <li><a href="{{ url('/servicerequest') }}">New request</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/serviceorder/1') }}">Order nr 1</a></li>
+                    <li><a href="{{ url('/allserviceorders') }}">Orders</a></li>
                 </ul>
                
                
