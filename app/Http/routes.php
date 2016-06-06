@@ -27,8 +27,8 @@ Route::get('/customerorders', [
     'middleware' => 'auth'
     ]);
 
-Route::get('/notes', [
-    'uses' => '______@index',
+Route::get('/notes/{id}', [
+    'uses' => 'ServiceNoteController@getNotes',
     'middleware' => 'auth'
     ]);
 
@@ -156,4 +156,11 @@ Route::get('/getdevicename', [
     'uses' => 'DeviceController@findByID',
     'as' => 'getdevicename', 
     'middleware' => 'employee'
+    ]);
+
+//KLIENDI ACTIONID
+Route::post('/commentorder', [
+    'uses' => 'ServiceNoteController@createNote',
+    'as' => 'comment.create',
+    'middleware' => 'auth'
     ]);
