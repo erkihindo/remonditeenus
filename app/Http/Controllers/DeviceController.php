@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Device;
 use App\Device_type;
+use App\Service_device;
 
 class DeviceController extends Controller
 {
@@ -92,4 +93,21 @@ class DeviceController extends Controller
         
         return response()->json($device->name,200);
     }
+    
+    public function findByOrderID(Request $request) {
+        
+        $devices = [];
+        $serviceDevices = Service_device::where('service_order_id', $request->id)->get();
+        
+        foreach($serviceDevices as $serviceDevice) {
+            
+            $device = Device::find($serviceDevice->device_id);
+            
+            array_push($devices, array($device->id, $device->name));
+            
+        }
+        return response()->json($devices[0],200);
+    }
+    
+    
 }

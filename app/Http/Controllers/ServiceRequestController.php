@@ -53,9 +53,10 @@ class ServiceRequestController extends Controller
     }
     
     public function updateRequest(Request $request) {
+        
         $newRequest = Service_request::find($request->id);
         
-        if($request->status_type == true) {
+        if($request->status_type == "true") {
             $newRequest->service_request_status_type_id = 2;
         } else {
             $newRequest->service_request_status_type_id = 1;
@@ -71,6 +72,7 @@ class ServiceRequestController extends Controller
     }
     
     public function updateRequesttwo(Request $request) {
+        
         $newRequest = Service_request::find($request->id);
         
         if($request->is_rejected == true) {

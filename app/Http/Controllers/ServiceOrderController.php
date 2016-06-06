@@ -59,6 +59,7 @@ class ServiceOrderController extends Controller
         $newOrder->so_status_type_id = $request->order_status;
         $newOrder->status_changed_by = Auth::user()->id;
         $newOrder->price_total = $request->price_total;
+        
         $newOrder->created_by = Auth::user()->id;
         $newOrder->updated_by = Auth::user()->id;
         $newOrder->save();
@@ -79,6 +80,7 @@ class ServiceOrderController extends Controller
             $newAction->service_type_id = $request->service_type[$i];
             $newAction->service_device_id = $newSerDev->id;
             $newAction->service_order_id = $newOrder->id;
+            $newAction->created_by = Auth::user()->id;
             $newAction->service_amount = $request->amount1[$i];
             $newAction->price = $request->unit_price1[$i];
             $newAction->save();
@@ -97,5 +99,94 @@ class ServiceOrderController extends Controller
         }
         
         dd("Saved all");
+    }
+    public function findSoStateByID(Request $request) {
+        $oldOrder = Service_order::find($request->id);
+        return response()->json($oldOrder->so_status_type->id,200);
+        
+    }
+    
+    public function saveOrder(Request $request) {
+        $order = new Service_order();
+        $order->service_request_id = $request->oldReqID;
+        $order->so_status_type_id = $request->so_status_type_id;
+        $order->status_changed_by = Auth::user()->id;   
+        $order->price_total = $request->price_total;
+       
+        $order->updated_by = Auth::user()->id;
+        $order->save();
+        
+        foreach($request->services as $action) {
+            $newAction = new Service_action();
+            $newAction->action_description = $action['serviceDescription'];
+            $newAction->service_action_status_type_id = 1;
+            $newAction->service_type_id = $action['serviceType'];
+            $newAction->service_device_id = $request->service_device;
+            $newAction->service_order_id = $order->id;
+            $newAction->created_by = Auth::user()->id;
+            $newAction->service_amount = $action['serviceAmount'];
+            $newAction->price = $action['serviceUnitPrice'];
+            $newAction->save();
+        }
+        foreach($request->parts as $part) {
+            $newPart = new Service_part();
+            $newPart->part_name = $part['partDescription'];
+            $newPart->service_device_id = $request->service_device;
+            $newPart->service_order_id = $order->id;
+            $newPart->created_by = Auth::user()->id;
+            $newPart->part_count = $part['partAmount'];
+            $newPart->part_price = $part['partUnitPrice'];
+            $newPart->save();
+        }
+        $newServiceDevice = new Service_device();
+        $newServiceDevice->device_id = $request->service_device;
+        $newServiceDevice->service_order_id = $order->id;
+        $newServiceDevice->save();
+        return response()->json($order,200);
+        
+    }
+    public function updateOrder(Request $request) {
+        
+        $order = Service_order::find($request->id);
+        if($order->so_status_type_id != $request->so_status_type_id) {
+            $order->so_status_type_id = $request->so_status_type_id;
+            $order->status_changed_by = Auth::user()->id;
+        }        
+        $order->price_total = $request->price_total;
+       
+        $order->updated_by = Auth::user()->id;
+        $order->update();
+        
+        Service_action::where('service_order_id', $request->id)->delete();
+        foreach($request->services as $action) {
+            $newAction = new Service_action();
+            $newAction->action_description = $action['serviceDescription'];
+            $newAction->service_action_status_type_id = 1;
+            $newAction->service_type_id = $action['serviceType'];
+            $newAction->service_device_id = $request->service_device;
+            $newAction->service_order_id = $order->id;
+            $newAction->created_by = Auth::user()->id;
+            $newAction->service_amount = $action['serviceAmount'];
+            $newAction->price = $action['serviceUnitPrice'];
+            $newAction->save();
+        }
+        Service_part::where('service_order_id', $request->id)->delete();
+        foreach($request->parts as $part) {
+            $newPart = new Service_part();
+            $newPart->part_name = $part['partDescription'];
+            $newPart->service_device_id = $request->service_device;
+            $newPart->service_order_id = $order->id;
+            $newPart->created_by = Auth::user()->id;
+            $newPart->part_count = $part['partAmount'];
+            $newPart->part_price = $part['partUnitPrice'];
+            $newPart->save();
+        }
+        Service_device::where('service_order_id', $request->id)->delete();
+        $newServiceDevice = new Service_device();
+        $newServiceDevice->device_id = $request->service_device;
+        $newServiceDevice->service_order_id = $order->id;
+        $newServiceDevice->save();
+        return response()->json($order,200);
+        
     }
 }
