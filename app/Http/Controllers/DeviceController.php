@@ -15,10 +15,7 @@ class DeviceController extends Controller
         return view('employee/devices');
     }
     
-    public function adddevice()
-    {
-        return view('employee/adddevice');
-    }
+    
     public function createDevice(Request $request) {
        
         $newDevice = new Device();

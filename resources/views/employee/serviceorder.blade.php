@@ -62,7 +62,7 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
                     <tr>
                         <td>tellimuse staatus:</td>
                         <td><select name="order_status" id="order_status"></select></td>
-                        <td colspan="3"><input type="button" value="Salvesta tellimus"></td>
+                        <td colspan="3"><input type="button" onclick="saveOrder()" value="Salvesta tellimus"></td>
                         <td><input type="submit" value="Tee arve" id="arve_nupp"></td>
                     </tr>
                 </table>

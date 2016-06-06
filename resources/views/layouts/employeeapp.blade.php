@@ -61,9 +61,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/serviceorder/1') }}">Order nr 1</a></li>
                 </ul>
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/devices') }}">Devices</a></li>
-                </ul>
+               
                
                 
                 <ul class="nav navbar-nav">

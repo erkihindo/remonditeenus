@@ -1,9 +1,8 @@
-var services = [];
+var service_types = [];
 var serviceamount;
 var rowCount = 2;
 var parts = [];
 var services = [];
-
 window.onload = function () {
         hide('deviceAddForm');
         hide('deviceSearchForm');
@@ -91,17 +90,17 @@ $.ajax({
     data: { _token: token}
 })
 .done(function (msg) {
-    services = msg;
+    service_types = msg;
     console.log("Service types: ");
-    console.log(services);
+    console.log(service_types);
     populateServiceDropdown(1);
 });
 
 function populateServiceDropdown(rowNo) {
-    for(var i=0; i<services.length; i++) {
+    for(var i=0; i<service_types.length; i++) {
         var option = document.createElement("option");
-        option.text = services[i][1];
-        option.value = services[i][0];
+        option.text = service_types[i][1];
+        option.value = service_types[i][0];
         document.getElementById("service_types" + rowNo).add(option);
     }
     changeUnits(rowNo);
@@ -128,14 +127,14 @@ function populateServiceDropdown(rowNo) {
 function changeUnits(rowNo) {
     var servicedropdown = document.getElementById("service_types" + rowNo);
     if(servicedropdown.value == 1) {
-        document.getElementById("unit_price" + rowNo).value = services[0][3];
-        document.getElementById("unit_type" + rowNo).innerHTML = services[0][2];
+        document.getElementById("unit_price" + rowNo).value = service_types[0][3];
+        document.getElementById("unit_type" + rowNo).innerHTML = service_types[0][2];
     } else if(servicedropdown.value == 2) {
-        document.getElementById("unit_price" + rowNo).value = services[1][3];
-        document.getElementById("unit_type" + rowNo).innerHTML = services[1][2];
+        document.getElementById("unit_price" + rowNo).value = service_types[1][3];
+        document.getElementById("unit_type" + rowNo).innerHTML = service_types[1][2];
     } else {
-        document.getElementById("unit_price" + rowNo).value = services[2][3];
-        document.getElementById("unit_type" + rowNo).innerHTML = services[2][2];
+        document.getElementById("unit_price" + rowNo).value = service_types[2][3];
+        document.getElementById("unit_type" + rowNo).innerHTML = service_types[2][2];
     }
     calculateTotal(rowNo);
 }
@@ -254,4 +253,10 @@ function addNewPart() {
     row.insertCell(6).innerHTML = '<input type="number" name="unit_price' + rowCount + '" id="unit_price' + rowCount + '" onchange="calculateTotal(' + rowCount + ');">';    
     row.insertCell(7).innerHTML = 'hind kokku:';
     row.insertCell(8).innerHTML = '<input type="number" name="total_price' + rowCount + '" id="total_price' + rowCount + '" disabled value="0">';
+}
+
+function saveOrder() {
+    console.log("Saving");
+    console.log(services);
+    console.log(parts);
 }
