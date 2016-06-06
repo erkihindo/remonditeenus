@@ -10,12 +10,13 @@ var urlToGetInvoiceStatusTypes = '{{ route('getinvoicestatustypes') }}';
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <form action="{{route('invoice.create')}}" method="POST">
+            <form action="{{route('invoice.update')}}" method="POST">
                 <input type="hidden" value="{{ Session::token() }}" name="_token">
                 <input type="hidden" value="{{ $serviceorder->id }}" name="orderID">
                 <table>
                     <tr>
                         <td >Arve nr {{ $newID }}</td>
+                    <input type="hidden" value="{{$newID}}" name="invoice_id">
                         @foreach($serviceorder->devices as $device)
                         <td >Seade: {{ $device->device->name}}</td>
                         @endforeach

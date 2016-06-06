@@ -22,3 +22,46 @@ function saveClient() {
     hideClientSearchForm();
     clientIsChosen = true;
 }
+
+
+$.ajax({
+    method: 'GET',
+    url: urlToGetInvoiceStatusTypes,
+    data: { _token: token}
+})
+.done(function (msg) {
+    console.log("Status types: ");
+    console.log(msg[0]);
+    var dropdown = document.getElementById("order_status");
+    for(var i=0; i<msg.length; i++) {
+        var option = document.createElement("option");
+        option.text = msg[i]['type_name'];
+        option.value = msg[i]['id'];
+        dropdown.add(option);
+    }
+   
+});
+
+
+$.ajax({
+        method: 'GET',
+        url: urlToGetCustomers,
+        data: { _token: token}
+    })
+    .done(function (msg) {
+        console.log("NAMES: ");
+        console.log(msg);
+        
+        $("#names").mSelectDBox({
+        "list": msg,
+
+         // enable multiple select
+         "multiple": false,
+
+           "autoComplete": true,
+         // Name of instance. 
+         "name": "b"
+
+
+       });  
+    });

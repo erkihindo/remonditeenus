@@ -3,24 +3,41 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Progress</div>
-
-                <div class="panel-body">
-                    <table>
-                        <tbody>
-                            <tr>
-                             vorm seisundi kohta, kui on seisuks hinnatud, saab valida tee arve ja minna arve tegemise lehele.
-                            </tr>
-                        </tbody>
-                        
-                    </table>
-                </div>
-            </div>
+        <div class="col-md-5 col-md-offset-2">
+                   
+            <table class="table">
+                <th>
+                    id
+                </th>
+                <th>
+                    staatus
+                </th>
+                <th>
+                    Summa
+                </th>
+                <th>
+                    uuendatud
+                </th>
+                @foreach($invoices as $invoice)
+                 <tr onclick="window.open('{{ URL::to('editinvoice') . "/". $invoice->id }}','_self');">
+                    <td>
+                        {{ $invoice->id }}
+                    </td>
+                   <td>
+                        {{ $invoice->invoice_status_type->type_name }}
+                    </td>
+                    <td>
+                        {{ $invoice->service_order->price_total }}
+                    </td>
+                    <td>
+                        {{ $invoice->invoice_date }}
+                    </td>
+                </tr> 
+                @endforeach
+            </table>
+            
         </div>
     </div>
 </div>
 
-<script src="{{ URL::to('src/js/servicerequest.js') }}"></script>
 @endsection
