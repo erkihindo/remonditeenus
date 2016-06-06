@@ -34,6 +34,7 @@ $.ajax({
    
 window.onload = function () {
         hideClientSearchForm();
+        checkbox = false;
     }
     
 function showClientSearchForm() {
@@ -50,13 +51,16 @@ function saveClient() {
     document.getElementById('customer').value = name;
     hideClientSearchForm();
     clientIsChosen = true;
+    if (!checkbox.checked) {
+        document.getElementById('submitButton').removeAttribute('disabled');
+    }
 }
 
 function saveRequest() {
     var customer = document.getElementById('customer').value;
     var customer_desc = document.getElementById('customer_desc').value;
     var employee_desc = document.getElementById('employee_desc').value;
-    var status_type = checkbox.checked;
+    var status_type = document.getElementById('status_type').checked;
     
     $.ajax({
         method: 'POST',
@@ -73,15 +77,6 @@ function saveRequest() {
 
 checkbox.change(function(event) {
     var checkbox = event.target;
-    if (!checkbox.checked && clientIsChosen) {
-        document.getElementById('submitButton').removeAttribute('disabled');    
-    } else {
-        document.getElementById('submitButton').setAttribute('disabled', true);
-    }
-});
-
-name.change(function(event) {
-    var name = event.target;
     if (!checkbox.checked && clientIsChosen) {
         document.getElementById('submitButton').removeAttribute('disabled');    
     } else {
