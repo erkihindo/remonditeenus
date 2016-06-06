@@ -87,6 +87,38 @@ $.ajax({
         }
     });
 });
+if(oldDevice == true) {
+    console.log("Getting old devices");
+    $.ajax({
+    method: 'GET',
+    url: urlToGetOldDevices,
+    data: {id: oldOrderID, _token: token}
+    })
+    .done(function (msg) {
+        console.log("Old devices: ");
+        console.log(msg);
+        var deviceDropdown = document.getElementById("device");
+        var option = document.createElement("option");
+        option.value = msg[0];
+        option.text = msg[1];
+        deviceDropdown.add(option);
+    });
+    console.log("Getting old so_state")
+     $.ajax({
+    method: 'GET',
+    url: urlToGetOldSoState,
+    data: {id: oldOrderID, _token: token}
+    })
+    .done(function (msg) {
+        console.log("Old SoState: ");
+        console.log(msg);
+        var deviceDropdown = document.getElementById("order_status");
+        deviceDropdown.selectedIndex = msg -1;
+        if(deviceDropdown.value == 3) {
+            document.getElementById("arve_nupp").style.display = 'inline';
+        }
+    });
+}
 
 //teenus
 $.ajax({
@@ -113,7 +145,10 @@ function populateServiceDropdown(rowNo) {
         document.getElementById("service_types" + rowNo).add(option);
         
     }
-    document.getElementById("service_types" + rowNo).selectedIndex = document.getElementById("oldType" + rowNo).value-1;
+    if(oldDevice) {
+        document.getElementById("service_types" + rowNo).selectedIndex = document.getElementById("oldType" + rowNo).value-1;
+    
+    }
     
     changeUnits(rowNo);
     calculateTotal(rowNo);
@@ -310,4 +345,39 @@ function saveOrder() {
     }
     console.log(services);
     console.log(parts);
+    var oldReqID = document.getElementById("oldReqID").value;
+    var so_status_type_id = document.getElementById("order_status").value;
+    var price_total = document.getElementById("total").value;
+    var service_device = document.getElementById("device").value;
+    var price_total = document.getElementById("price_total").value;
+    
+    if(oldDevice == false) {
+        console.log("posting save");
+        $.ajax({
+            method: 'POST',
+            url: urlToGetSaveOrder,
+            data: {oldReqID: oldReqID, so_status_type_id:so_status_type_id,price_total:price_total,service_device:service_device,  services:services, parts:parts, _token: token}
+        })
+        .done(function (msg) {
+            
+            console.log("Saved: ");
+            console.log(msg);
+            window.location.href = urlToList;
+
+        });
+    } else {
+        console.log("posting update");
+        $.ajax({
+            method: 'POST',
+            url: urlToGetUpdateOrder,
+            data: {id: oldOrderID,so_status_type_id:so_status_type_id,price_total:price_total,service_device:service_device,  services:services, parts:parts, _token: token}
+        })
+        .done(function (msg) {
+            
+            console.log("Updated: ");
+            console.log(msg);
+            window.location.href = urlToList;
+
+        });
+    }
 }

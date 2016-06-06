@@ -64,7 +64,7 @@ function saveRequest() {
     .done(function (msg) {
         console.log("SAVED: ");
         console.log(msg);
-        window.location.href = urlToHome;
+        //window.location.href = urlToHome;
         
     });
 }

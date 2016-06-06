@@ -63,6 +63,16 @@ Route::post('/serviceorders', [
     'as' => 'serviceorder.create',
     'middleware' => 'employee'
     ]);
+Route::post('/saveserviceorder', [
+    'uses' => 'ServiceOrderController@saveOrder',
+    'as' => 'saveserviceorder',
+    'middleware' => 'employee'
+    ]);
+Route::post('/updateserviceorder', [
+    'uses' => 'ServiceOrderController@updateOrder',
+    'as' => 'updateserviceorder',
+    'middleware' => 'employee'
+    ]);
 Route::get('/allservicerequests', [
     'uses' => 'ServiceRequestController@allRequests',
     'as' => 'allservicerequests', 
@@ -161,6 +171,18 @@ Route::post('/createpart', [
 Route::get('/getdevicename', [
     'uses' => 'DeviceController@findByID',
     'as' => 'getdevicename', 
+    'middleware' => 'employee'
+    ]);
+
+Route::get('/getdevicesbyorderid', [
+    'uses' => 'DeviceController@findByOrderID',
+    'as' => 'getdevicesbyorderid', 
+    'middleware' => 'employee'
+    ]);
+
+Route::get('/getsostatebyorderid', [
+    'uses' => 'ServiceOrderController@findSoStateByID',
+    'as' => 'getsostatebyorderid', 
     'middleware' => 'employee'
     ]);
 
