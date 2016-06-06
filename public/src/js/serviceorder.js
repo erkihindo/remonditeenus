@@ -226,16 +226,16 @@ function addNewService() {
     rowCount++;
     var row = document.getElementById('orderTable').insertRow(rowCount + 2);
     row.insertCell(0).innerHTML = 'Töö';
-    row.insertCell(1).innerHTML = '<input type="text" name="service"' + rowCount + '>';
+    row.insertCell(1).innerHTML = '<input type="text" name="service[]" required>';
     row.insertCell(2).innerHTML = 'Teenus:';
-    row.insertCell(3).innerHTML = '<select name="service' + rowCount + '" id="service_types' + rowCount + '" onchange="changeUnits(' + rowCount + ');"></select>';   
+    row.insertCell(3).innerHTML = '<select name="service_type[]' + rowCount + '" id="service_types' + rowCount + '" onchange="changeUnits(' + rowCount + ');" ></select>';   
     row.insertCell(4).innerHTML = 'kogus:';
-    row.insertCell(5).innerHTML = '<input type="number" name="amount' + rowCount + '" id="amount' + rowCount + '" onchange="calculateTotal(' + rowCount + ');">';   
+    row.insertCell(5).innerHTML = '<input type="number" name="amount1[]' + rowCount + '" id="amount' + rowCount + '" onchange="calculateTotal(' + rowCount + ');" required>';   
     row.insertCell(6).innerHTML = '<span id="unit_type' + rowCount + '"></span>';    
     row.insertCell(7).innerHTML = 'ühiku hind:';
-    row.insertCell(8).innerHTML = '<input type="number" name="unit_price' + rowCount + '" id="unit_price' + rowCount + '" onchange="calculateTotal(' + rowCount + ');">';
+    row.insertCell(8).innerHTML = '<input type="number" name="unit_price1[]' + rowCount + '" id="unit_price' + rowCount + '" onchange="calculateTotal(' + rowCount + ');" required>';
     row.insertCell(9).innerHTML = 'hind kokku:';
-    row.insertCell(10).innerHTML = '<input type="number" name="total_price' + rowCount + '" id="total_price' + rowCount + '" disabled value="0">';
+    row.insertCell(10).innerHTML = '<input type="number" name="total_price1[]' + rowCount + '" id="total_price' + rowCount + '" disabled value="0"required>';
     populateServiceDropdown(rowCount);
 }
 
@@ -244,15 +244,15 @@ function addNewPart() {
     var row = document.getElementById('orderTable').insertRow(rowCount + 2);
     row.insertCell(0).innerHTML = 'Osa:';
     var partDescription = row.insertCell(1);
-    partDescription.innerHTML = '<input type="text" name="part' + rowCount + '">';
+    partDescription.innerHTML = '<input type="text" name="part[]' + rowCount + '" required>';
     partDescription.colSpan = "3";
     row.insertCell(2).innerHTML = 'kogus:';
-    row.insertCell(3).innerHTML = '<input type="number" name="amount' + rowCount + '" id="amount' + rowCount + '" onchange="calculateTotal(' + rowCount + ');">';   
+    row.insertCell(3).innerHTML = '<input type="number" name="amount2[]' + rowCount + '" id="amount' + rowCount + '" onchange="calculateTotal(' + rowCount + ');" required>';   
     row.insertCell(4).innerHTML = '[tk]';
     row.insertCell(5).innerHTML = 'ühiku hind:';   
-    row.insertCell(6).innerHTML = '<input type="number" name="unit_price' + rowCount + '" id="unit_price' + rowCount + '" onchange="calculateTotal(' + rowCount + ');">';    
+    row.insertCell(6).innerHTML = '<input type="number" name="unit_price2[]' + rowCount + '" id="unit_price' + rowCount + '" onchange="calculateTotal(' + rowCount + ');" required>';    
     row.insertCell(7).innerHTML = 'hind kokku:';
-    row.insertCell(8).innerHTML = '<input type="number" name="total_price' + rowCount + '" id="total_price' + rowCount + '" disabled value="0">';
+    row.insertCell(8).innerHTML = '<input type="number" name="total_price2[]' + rowCount + '" id="total_price' + rowCount + '" disabled value="0" required>';
 }
 
 function saveOrder() {

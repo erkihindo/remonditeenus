@@ -33,27 +33,27 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
                     </tr>
                     <tr>
                         <td>Töö:</td>
-                        <td><input type="text" name="service1"></td>
+                        <td><input type="text" name="service[]" required></td>
                         <td>Teenus:</td>
-                        <td><select name="service" id="service_types1" onchange="changeUnits(1)"></select></td>
+                        <td><select name="service_type[]" id="service_types1" onchange="changeUnits(1)"></select></td>
                         <td>kogus:</td>
-                        <td><input type="number" name="amount1" id="amount1" onchange="calculateTotal(1);"></td>
+                        <td><input type="number" name="amount1[]" id="amount1" onchange="calculateTotal(1);" required></td>
                         <td><span id="unit_type1"></span></td>
                         <td>ühiku hind:</td>
-                        <td><input type="number" name="unit_price1" id="unit_price1" onchange="calculateTotal(1);"></td>
+                        <td><input type="number" name="unit_price1[]" id="unit_price1" onchange="calculateTotal(1);" required></td>
                         <td>hind kokku:</td>
-                        <td><input type="number" name="total_price1" id="total_price1" disabled value="0"></td>
+                        <td><input type="number" name="total_price1[]" id="total_price1" disabled value="0" required></td>
                     </tr>
                     <tr>
                         <td>Osa:</td>
-                        <td colspan="3"><input type="text" name="part"></td>
+                        <td colspan="3"><input type="text" name="part[]" required></td>
                         <td>kogus:</td>
-                        <td><input type="number" name="amount2" id="amount2" onchange="calculateTotal(2);"></td>
+                        <td><input type="number" name="amount2[]" id="amount2" onchange="calculateTotal(2);" required></td>
                         <td>[tk]</td>
                         <td>ühiku hind:</td>
-                        <td><input type="number" name="unit_price2" id="unit_price2" onchange="calculateTotal(2);"></td>
+                        <td><input type="number" name="unit_price2[]" id="unit_price2" onchange="calculateTotal(2);" required></td>
                         <td>hind kokku:</td>
-                        <td><input type="number" name="total_price2" id="total_price2" disabled value="0"></td>
+                        <td><input type="number" name="total_price2[]" id="total_price2" disabled value="0"required></td>
                     </tr>
                     <tr>
                         <td><a href="javascript:addNewService()">Lisa töö</a></td>
