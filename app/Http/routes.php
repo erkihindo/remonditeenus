@@ -93,6 +93,12 @@ Route::post('/createrequest',[
     'middleware' => 'employee'
     ]);
 
+Route::post('/updaterequesttwo',[
+    'uses' => 'ServiceRequestController@updateRequesttwo',
+    'as' => 'servicerequest.update',
+    'middleware' => 'employee'
+    ]);
+
 Route::post('/saverequest',[
     'uses' => 'ServiceRequestController@saveRequest',
     'as' => 'saverequest',

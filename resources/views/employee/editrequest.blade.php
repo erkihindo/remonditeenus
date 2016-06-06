@@ -12,7 +12,7 @@ var urlToHome = '{{ route('/') }}';
 <div class="container">
     <div class="row">
         <div class="col-md-5 col-md-offset-2">
-            <form action="{{route('servicerequest.create')}}" method="POST" style="margin-left: 14%">
+            <form action="{{route('servicerequest.update')}}" method="POST" style="margin-left: 14%">
                 <input type="hidden" value="{{ Session::token() }}" name="_token">
                 <table>
                     <tr>

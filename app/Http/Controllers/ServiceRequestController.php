@@ -70,6 +70,24 @@ class ServiceRequestController extends Controller
         } 
     }
     
+    public function updateRequesttwo(Request $request) {
+        $newRequest = Service_request::find($request->id);
+        
+        if($request->is_rejected == true) {
+            $newRequest->service_request_status_type_id = 2;
+        } else {
+            $newRequest->service_request_status_type_id = 1;
+        }
+        $customer = User::where('name', $request->customer)->first();
+        $newRequest->user_id = $customer->id;
+        $newRequest->created_by = Auth::user()->id;
+        $newRequest->service_desc_by_customer = $request->customer_desc;
+        $newRequest->service_desc_by_employee = $request->employee_desc;
+        if($newRequest->update()) {
+            return redirect()->route('serviceorder', ['servicerequest' => $newRequest]);
+        } 
+    }
+    
     public function saveRequest(Request $request) {
         $newRequest = new Service_request();
         if($request->status_type == true) {
