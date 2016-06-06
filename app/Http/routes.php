@@ -58,8 +58,8 @@ Route::get('/invoices', [
     'uses' => 'InvoiceController@index',
     'middleware' => 'employee'
     ]);
-Route::get('/serviceorders', [
-    'uses' => 'ServiceOrderController@index',
+Route::post('/serviceorders', [
+    'uses' => 'ServiceOrderController@createOrder',
     'as' => 'serviceorder.create',
     'middleware' => 'employee'
     ]);

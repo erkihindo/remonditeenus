@@ -40,4 +40,8 @@ class ServiceOrderController extends Controller
         }
         return view('customer/customerorders', ['orders' => $customerOrders]);
     }
+    
+    public function createOrder(Request $request) {
+        dd($request);
+    }
 }
