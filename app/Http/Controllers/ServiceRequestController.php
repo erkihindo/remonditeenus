@@ -92,7 +92,7 @@ class ServiceRequestController extends Controller
     
     public function saveRequest(Request $request) {
         $newRequest = new Service_request();
-        if($request->status_type == true) {
+        if($request->status_type == "true") {
             $newRequest->service_request_status_type_id = 2;
         } else {
             $newRequest->service_request_status_type_id = 1;
