@@ -20,9 +20,8 @@ class CreateServiceDevicesTable extends Migration
             $table->timestamp('to_store');
             $table->timestamp('from_store');
             $table->string('service_description');
-            $table->timestamp('status_changed');
             $table->integer('store_status');
-            
+            $table->timestamps();
         });
     }
 

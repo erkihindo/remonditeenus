@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5 col-md-offset-2">
-            <table>
+            <table class="table">
                 <th>id</th>
                 <th>seisund</th>
                 <th>klient</th>

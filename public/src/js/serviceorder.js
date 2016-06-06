@@ -25,6 +25,11 @@ function showDeviceAddForm() {
     hide('deviceSearchForm');
     show('deviceAddForm');
 }
+//jälgib seadme muutust dropdownis
+document.getElementById("device").addEventListener("change", function() {
+        console.log("Changed device " + document.getElementById("device").value);
+        document.getElementById("device_input").value = document.getElementById("device").value
+    });
 
 //Seadme tüüp
 $.ajax({
@@ -146,6 +151,7 @@ function calculateTotal(rowNo) {
         total += parseInt(document.getElementById('total_price' + i).value);
     }
     document.getElementById("total").innerHTML = total;
+    document.getElementById("price_total").value = total;
 }
 
 function createDevice() {
@@ -214,9 +220,15 @@ function addToOrder(id) {
         data: {id: id, _token: token}
     })
     .done(function (msg) {
+        
         option.text = msg;
         deviceDropdown.add(option);
+        if(document.getElementById("device_input").value == 0) {
+            document.getElementById("device_input").value = document.getElementById("device").value
+        } 
     });
+    
+     
     hide('deviceSearchForm');
     hide('searchResultDiv');
 }
