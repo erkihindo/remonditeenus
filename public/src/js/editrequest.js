@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+var checkbox = $("#status_type");
 
 console.log("loaded servicerequest js");
 
@@ -31,8 +31,11 @@ $.ajax({
     });
    
 window.onload = function () {
-        hideClientSearchForm();
+    hideClientSearchForm();
+    if (!document.getElementById('status_type')) {
+        document.getElementById('submitButton').removeAttribute('disabled');    
     }
+};
     
 function showClientSearchForm() {
     document.getElementById('clientSearchForm').removeAttribute('hidden');
@@ -68,3 +71,12 @@ function editRequest() {
         
     });
 }
+
+checkbox.change(function(event) {
+    var checkbox = event.target;
+    if (!checkbox.checked) {
+        document.getElementById('submitButton').removeAttribute('disabled');    
+    } else {
+        document.getElementById('submitButton').setAttribute('disabled', true);
+    }
+});
