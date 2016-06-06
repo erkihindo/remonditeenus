@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 var checkbox = $("#status_type");
 var clientIsChosen = false;
 
@@ -33,9 +32,9 @@ $.ajax({
     });
    
 window.onload = function () {
-        hideClientSearchForm();
-        checkbox = false;
-    }
+    hideClientSearchForm();
+    checkbox.checked = false;
+};
     
 function showClientSearchForm() {
     document.getElementById('clientSearchForm').removeAttribute('hidden');
