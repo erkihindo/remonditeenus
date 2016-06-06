@@ -33,7 +33,7 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
                     </tr>
                     <tr>
                         <td>Töö:</td>
-                        <td><input type="text" name="service[]" required></td>
+                        <td><input type="text" name="service[]" id="service_description1" required></td>
                         <td>Teenus:</td>
                         <td><select name="service_type[]" id="service_types1" onchange="changeUnits(1)"></select></td>
                         <td>kogus:</td>
@@ -46,7 +46,7 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
                     </tr>
                     <tr>
                         <td>Osa:</td>
-                        <td colspan="3"><input type="text" name="part[]" required></td>
+                        <td colspan="3"><input type="text" name="part[]" id="part_description2" required style="width: 100%;"></td>
                         <td>kogus:</td>
                         <td><input type="number" name="amount2[]" id="amount2" onchange="calculateTotal(2);" required></td>
                         <td>[tk]</td>

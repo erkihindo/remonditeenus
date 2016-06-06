@@ -1,8 +1,7 @@
 var service_types = [];
 var serviceamount;
 var rowCount = 2;
-var parts = [];
-var services = [];
+
 window.onload = function () {
         hide('deviceAddForm');
         hide('deviceSearchForm');
@@ -226,7 +225,7 @@ function addNewService() {
     rowCount++;
     var row = document.getElementById('orderTable').insertRow(rowCount + 2);
     row.insertCell(0).innerHTML = 'Töö';
-    row.insertCell(1).innerHTML = '<input type="text" name="service[]" required>';
+    row.insertCell(1).innerHTML = '<input type="text" name="service[]" id="service_description' + rowCount + ' required>';
     row.insertCell(2).innerHTML = 'Teenus:';
     row.insertCell(3).innerHTML = '<select name="service_type[]' + rowCount + '" id="service_types' + rowCount + '" onchange="changeUnits(' + rowCount + ');" ></select>';   
     row.insertCell(4).innerHTML = 'kogus:';
@@ -244,7 +243,7 @@ function addNewPart() {
     var row = document.getElementById('orderTable').insertRow(rowCount + 2);
     row.insertCell(0).innerHTML = 'Osa:';
     var partDescription = row.insertCell(1);
-    partDescription.innerHTML = '<input type="text" name="part[]' + rowCount + '" required>';
+    partDescription.innerHTML = '<input type="text" name="part[]' + rowCount + '" id="part_description' + rowCount + ' required  style="width: 100%;">';
     partDescription.colSpan = "3";
     row.insertCell(2).innerHTML = 'kogus:';
     row.insertCell(3).innerHTML = '<input type="number" name="amount2[]' + rowCount + '" id="amount' + rowCount + '" onchange="calculateTotal(' + rowCount + ');" required>';   
@@ -256,7 +255,38 @@ function addNewPart() {
 }
 
 function saveOrder() {
+    var parts = [];
+    var services = [];
     console.log("Saving");
+    
+    for (var i = 1; i <= rowCount; i++) {
+        
+        if (document.getElementById('orderTable').rows[i + 2].cells[0].innerHTML == 'Töö:') {
+            var serviceDescription = document.getElementById('service_description' + i).value;
+            var serviceType = document.getElementById('service_types' + i).value;
+            var serviceAmount = document.getElementById('amount' + i).value;
+            var serviceUnitPrice = document.getElementById('unit_price' + i).value;
+            var serviceTotal = document.getElementById('total_price' + i).value;
+            services.push({
+                "serviceDescription": serviceDescription,
+                "serviceType": serviceType,
+                "serviceAmount": serviceAmount,
+                "serviceUnitPrice": serviceUnitPrice,
+                "serviceTotal": serviceTotal
+            });
+        } else {
+            var partDescription = document.getElementById('part_description' + i).value;
+            var partAmount = document.getElementById('amount' + i).value;
+            var partUnitPrice = document.getElementById('unit_price' + i).value;
+            var partTotalPrice = document.getElementById('total_price' + i).value;
+            parts.push({
+                "partDescription": partDescription,
+                "partAmount" : partAmount,
+                "partUnitPrice": partUnitPrice,
+                "partTotalPrice": partTotalPrice
+            });
+        }
+    }
     console.log(services);
     console.log(parts);
 }
