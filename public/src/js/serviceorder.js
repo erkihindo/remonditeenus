@@ -1,6 +1,7 @@
 var service_types = [];
 var serviceamount;
 var rowCount = 2 + addition;
+var dropdown = document.getElementById("order_status");
    
 console.log(actionCount);
 window.onload = function () {
@@ -68,7 +69,7 @@ $.ajax({
 .done(function (msg) {
     console.log("Status types: ");
     console.log(msg);
-    var dropdown = document.getElementById("order_status");
+    dropdown = document.getElementById("order_status");
     for(var i=0; i<msg.length; i++) {
         var option = document.createElement("option");
         option.text = msg[i][1];
@@ -76,14 +77,14 @@ $.ajax({
         dropdown.add(option);
     }
     if(dropdown.value != 3) {
-        document.getElementById("arve_nupp").style.display = 'none';
+        hide("arve_nupp");
     }
     dropdown.addEventListener("change", function() {
         console.log("Changed order status " + dropdown.text);
         if(dropdown.value == 3) {
-            document.getElementById("arve_nupp").style.display = 'block';
+            show("arve_nupp");
         } else {
-            document.getElementById("arve_nupp").style.display = 'none';
+            hide("arve_nupp");
         }
     });
 });
@@ -115,7 +116,7 @@ if(oldDevice == true) {
         var deviceDropdown = document.getElementById("order_status");
         deviceDropdown.selectedIndex = msg -1;
         if(deviceDropdown.value == 3) {
-            document.getElementById("arve_nupp").style.display = 'inline';
+            show("arve_nupp");
         }
     });
 }
@@ -345,8 +346,9 @@ function saveOrder() {
             
             console.log("Saved: ");
             console.log(msg);
-            window.location.href = urlToList;
-
+            if (dropdown.value != 3) {
+                window.location.href = urlToList;
+            }          
         });
     } else {
         console.log("posting update");
@@ -359,8 +361,12 @@ function saveOrder() {
             
             console.log("Updated: ");
             console.log(msg);
-            window.location.href = urlToList;
-
+            if (dropdown.value != 3) {
+                window.location.href = urlToList;
+            }
         });
+    }
+    if(dropdown.value == 3) {
+        document.getElementById("arve_nupp").removeAttribute('disabled');
     }
 }

@@ -32,7 +32,7 @@ $.ajax({
    
 window.onload = function () {
     hideClientSearchForm();
-    if (!document.getElementById('status_type')) {
+    if (!document.getElementById('status_type').checked) {
         document.getElementById('submitButton').removeAttribute('disabled');    
     }
 };
