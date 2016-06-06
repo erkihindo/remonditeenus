@@ -17,7 +17,7 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
         <div class="col-md-12">
             <form action="{{route('serviceorder.create')}}" method="POST">
                 <input type="hidden" value="{{ Session::token() }}" name="_token">
-                <table>
+                <table id="orderTable">
                     <tr>
                         <td colspan="2">Tellimus nr {{ $newID }}</td>
                     </tr>
@@ -33,36 +33,36 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
                     </tr>
                     <tr>
                         <td>Töö:</td>
-                        <td><input type="text" name="job"></td>
+                        <td><input type="text" name="service1"></td>
                         <td>Teenus:</td>
-                        <td><select name="service" id="service_types"></select></td>
+                        <td><select name="service" id="service_types1" onchange="changeUnits(1)"></select></td>
                         <td>kogus:</td>
-                        <td><input type="number" name="amount1" id="amount1"></td>
-                        <td id="unit_type1">[h]</td>
+                        <td><input type="number" name="amount1" id="amount1" onchange="calculateTotal(1);"></td>
+                        <td><span id="unit_type1"></span></td>
                         <td>ühiku hind:</td>
-                        <td><input type="number" name="unit_price1" id="unit_price1"></td>
+                        <td><input type="number" name="unit_price1" id="unit_price1" onchange="calculateTotal(1);"></td>
                         <td>hind kokku:</td>
                         <td><input type="number" name="total_price1" id="total_price1" disabled value="0"></td>
                     </tr>
                     <tr>
                         <td>Osa:</td>
-                        <td colspan="3"><input type="text" name="part"></textarea></td>
+                        <td colspan="3"><input type="text" name="part"></td>
                         <td>kogus:</td>
-                        <td><input type="number" name="amount2" id="amount2" onchange="calculateTotal(2, 'part');"></td>
+                        <td><input type="number" name="amount2" id="amount2" onchange="calculateTotal(2);"></td>
                         <td>[tk]</td>
                         <td>ühiku hind:</td>
-                        <td><input type="number" name="unit_price2" id="unit_price2" onchange="calculateTotal(2, 'part');"></td>
+                        <td><input type="number" name="unit_price2" id="unit_price2" onchange="calculateTotal(2);"></td>
                         <td>hind kokku:</td>
                         <td><input type="number" name="total_price2" id="total_price2" disabled value="0"></td>
                     </tr>
                     <tr>
-                        <td><a href="">Lisa töö</a></td>
-                        <td><a href="">Lisa osa</a></td>
+                        <td><a href="javascript:addNewService()">Lisa töö</a></td>
+                        <td><a href="javascript:addNewPart()">Lisa osa</a></td>
                     </tr>
                     <tr>
                         <td>tellimuse staatus:</td>
                         <td><select name="order_status" id="order_status"></select></td>
-                        <td colspan="2"><input type="button" value="Salvesta tellimus"></td>
+                        <td colspan="3"><input type="button" value="Salvesta tellimus"></td>
                         <td><input type="submit" value="Tee arve" id="arve_nupp"></td>
                     </tr>
                 </table>
