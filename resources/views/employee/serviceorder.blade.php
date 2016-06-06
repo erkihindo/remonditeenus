@@ -112,7 +112,7 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
     <div class="row">
         <div class="col-md-3" id="deviceAddForm">
             <div action="">
-                <table>
+                <table class="table-bordered">
                     <tr>
                         <td colspan="2">SEADME LISAMINE</td>
                     </tr>
@@ -148,7 +148,7 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
         </div>
         <div class="col-md-3" id="deviceSearchForm">
             <div>
-                <table>
+                <table class="table-bordered">
                     <tr>
                         <td colspan="2">SEADME OTSING</td>
                     </tr>
