@@ -6,27 +6,20 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-5 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2">
                    
-            <table class="table">
-                <th>
-                    id
-                </th>
-                <th>
-                    staatus
-                </th>
-                <th>
-                    Summa
-                </th>
-                <th>
-                    Kliendi seletus
-                </th>
-                <th>Töötaja seletus</th>
-                <th>
-                    uuendatud
-                </th>
+            <table class="table table-hover">
+                <tr>
+                    <th>id</th>
+                    <th>staatus</th>
+                    <th>Summa</th>
+                    <th>Kliendi seletus</th>
+                    <th>Töötaja seletus</th>
+                    <th>uuendatud</th>
+                </tr>
+                
                 @foreach($orders as $order)
-                 <tr onclick="window.open('{{ URL::to('serviceorder') . "/". $order->service_request->id }}','_self');">
+                <tr class="clickable" onclick="window.open('{{ URL::to('serviceorder') . "/". $order->service_request->id }}','_self');">
                     <td>
                         {{ $order->id }}
                     </td>
