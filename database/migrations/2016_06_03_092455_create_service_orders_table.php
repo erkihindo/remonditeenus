@@ -18,7 +18,7 @@ class CreateServiceOrdersTable extends Migration
             $table->integer('service_request_id');
             $table->timestamp('status_changed');
             $table->integer('status_changed_by');
-            $table->integer('number');
+            $table->integer('price_total');
             $table->string('note');
             $table->integer('created_by');
             $table->integer('updated_by');

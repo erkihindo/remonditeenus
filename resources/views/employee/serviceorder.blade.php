@@ -17,6 +17,7 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
         <div class="col-md-12">
             <form action="{{route('serviceorder.create')}}" method="POST">
                 <input type="hidden" value="{{ Session::token() }}" name="_token">
+                <input type="hidden" value="{{ $servicerequest->id }}" name="requestID">
                 <table id="orderTable">
                     <tr>
                         <td colspan="2">Tellimus nr {{ $newID }}</td>
@@ -24,12 +25,14 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
                     <tr>
                         <td colspan="2">Vali tellimuse seade:</td>
                         <td><select name="device" id="device"></select></td>
+                    <input type="hidden" name="device" id="device_input">
                         <td><input type="button" value="Otsi seadet" onclick="showDeviceSearchForm()"></td>
                         <td colspan="2"><input type="button" value="Lisa uus seade" onclick="showDeviceAddForm()"></td>
                     </tr>
                     <tr>
                         <td colspan="2">Summa kokku:</td>
                         <td><span id="total">0</span></td>
+                    <input type="hidden" name="price_total" id="price_total">
                     </tr>
                     <tr>
                         <td>Töö:</td>
