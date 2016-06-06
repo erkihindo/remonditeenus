@@ -117,23 +117,6 @@ function populateServiceDropdown(rowNo) {
     
     changeUnits(rowNo);
     calculateTotal(rowNo);
-    /*servicedropdown.addEventListener("change", function() {
-        console.log("Changed service " + servicedropdown.value);
-        changeUnits(rowNo);
-        calculateTotal(rowNo);
-    });
-    serviceamount = document.getElementById("amount1");
-    serviceamount.addEventListener("change", function() {
-        console.log("Changed amount " + serviceamount.value);
-        calculateTotal(rowNo);
-    });
-    
-    unit_price = document.getElementById("unit_price1");
-    unit_price.value = services[0][3];
-    unit_price.addEventListener("change", function() {
-        calculateTotal(rowNo);
-    });*/
-    //document.getElementById("unit_type2").innerHTML = services[0][2];  
 }
 
 function changeUnits(rowNo) {

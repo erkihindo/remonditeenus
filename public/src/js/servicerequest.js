@@ -71,14 +71,6 @@ function saveRequest() {
     });
 }    
 
-function handleButton() {
-
-    if (document.getElementById('status_type').checked == false) {
-        document.getElementById('submitButton').removeAttribute('disabled');
-    }       
-}
-
-
 checkbox.change(function(event) {
     var checkbox = event.target;
     if (!checkbox.checked && clientIsChosen) {
