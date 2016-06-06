@@ -65,7 +65,7 @@
                
                 
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/invoices') }}">Check please</a></li>
+                    <li><a href="{{ url('/invoices') }}">Invoices</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

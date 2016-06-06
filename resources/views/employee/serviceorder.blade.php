@@ -22,7 +22,7 @@ var urlToList = '{{ route('allserviceorders') }}';
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <form action="{{route('serviceorder.create')}}" method="POST">
+            <form action="{{route('gotoinvoice')}}" method="POST">
                 <input type="hidden" value="{{ Session::token() }}" name="_token">
                 <input type="hidden" value="{{ $servicerequest->id }}" name="requestID" id="oldReqID">
                 <table id="orderTable">

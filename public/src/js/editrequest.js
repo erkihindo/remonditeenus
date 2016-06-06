@@ -5,7 +5,7 @@
  */
 var checkbox = $("#status_type");
 
-console.log("loaded servicerequest js");
+console.log("loaded editrequest js");
 
 $.ajax({
         method: 'GET',

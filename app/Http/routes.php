@@ -17,6 +17,8 @@ Route::get('/', [
     'as' => '/'
     ]);
 
+
+
 Route::auth();
 
 
@@ -32,10 +34,6 @@ Route::get('/notes/{id}', [
     'middleware' => 'auth'
     ]);
 
-Route::get('/bills', [
-    'uses' => '______@index',
-    'middleware' => 'auth'
-    ]);
 
 
 //TÖÖTAJA
@@ -58,6 +56,16 @@ Route::get('/invoice', [
     'uses' => 'InvoiceController@index',
     'middleware' => 'employee'
     ]);
+Route::get('/invoices', [
+    'uses' => 'InvoiceController@showAll',
+    'as' => 'invoices',
+    'middleware' => 'employee'
+    ]);
+Route::get('/editinvoice/{id}', [
+    'uses' => 'InvoiceController@openEdit',
+    'middleware' => 'employee'
+    ]);
+
 Route::post('/serviceorders', [
     'uses' => 'ServiceOrderController@createOrder',
     'as' => 'serviceorder.create',
@@ -99,6 +107,25 @@ Route::get('/serviceorder/{servicerequest}', [
 Route::get('/allserviceorders', [
     'uses' => 'ServiceOrderController@getAll',
     'as' => 'allserviceorders', 
+    'middleware' => 'employee'
+    ]);
+
+
+Route::post('/newinvoice', [
+    'uses' => 'InvoiceController@newInvoice',
+    'as' => 'gotoinvoice',
+    'middleware' => 'employee'
+    ]);
+
+Route::post('/createinvoice', [
+    'uses' => 'InvoiceController@createInvoice',
+    'as' => 'invoice.create',
+    'middleware' => 'employee'
+    ]);
+
+Route::post('/updateinvoice', [
+    'uses' => 'InvoiceController@updateInvoice',
+    'as' => 'invoice.update',
     'middleware' => 'employee'
     ]);
 
@@ -154,6 +181,12 @@ Route::get('/getservicetypes', [
 Route::get('/getdevicetypes', [
     'uses' => 'DeviceController@getTypes',
     'as' => 'getdevicetypes', 
+    'middleware' => 'employee'
+    ]);
+
+Route::get('/getinvoicestatustypes', [
+    'uses' => 'InvoiceController@getTypes',
+    'as' => 'getinvoicestatustypes', 
     'middleware' => 'employee'
     ]);
 
