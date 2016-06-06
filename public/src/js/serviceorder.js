@@ -1,7 +1,8 @@
 var service_types = [];
 var serviceamount;
-var rowCount = 2;
-
+var rowCount = 2 + addition;
+   
+console.log(actionCount);
 window.onload = function () {
         hide('deviceAddForm');
         hide('deviceSearchForm');
@@ -97,16 +98,23 @@ $.ajax({
     service_types = msg;
     console.log("Service types: ");
     console.log(service_types);
-    populateServiceDropdown(1);
+    for(var i = 1; i < actionCount+1; i++) {
+        populateServiceDropdown(i);
+    }
+    
 });
 
 function populateServiceDropdown(rowNo) {
+    console.log("RowNo" + rowNo);
     for(var i=0; i<service_types.length; i++) {
         var option = document.createElement("option");
         option.text = service_types[i][1];
         option.value = service_types[i][0];
         document.getElementById("service_types" + rowNo).add(option);
+        
     }
+    document.getElementById("service_types" + rowNo).selectedIndex = document.getElementById("oldType" + rowNo).value-1;
+    
     changeUnits(rowNo);
     calculateTotal(rowNo);
     /*servicedropdown.addEventListener("change", function() {

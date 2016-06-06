@@ -1,7 +1,7 @@
 @extends('layouts.employeeapp')
 
 @section('content')
-
+{{-- */$idCount=1;/* --}}
 <script>
 var token = '{{ Session::token() }}';
 var urlToGetSoStatusTypes = '{{ route('getsostatustypes') }}';
@@ -34,11 +34,31 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
                         <td><span id="total">0</span></td>
                     <input type="hidden" name="price_total" id="price_total">
                     </tr>
+                    @if($oldOrder != null)
+                        @foreach($oldOrder->actions as $service)
+                        <tr>
+                            <td>Töö:</td>
+                            <td><input type="text" name="service[]" id="service_description{{$idCount}}" value="{{ $service->action_description }}" required></td>
+                            <td>Teenus:</td>
+                            <td><select name="service_type[]" id="service_types{{$idCount}}" onchange="changeUnits(1)"></select></td>
+                        <input type="hidden" id="oldType{{$idCount}}" value="{{ $service->service_type_id }}">
+                            <td>kogus:</td>
+                            <td><input type="number" name="amount1[]" id="amount{{$idCount}}" value="{{ $service->service_amount }}" onchange="calculateTotal(1);" required></td>
+                            <td><span id="unit_type{{$idCount}}"></span></td>
+                            <td>ühiku hind:</td>
+                            <td><input type="number" name="unit_price1[]" id="unit_price{{$idCount}}" value="{{ $service->price }}" onchange="calculateTotal(1);" required></td>
+                            <td>hind kokku:</td>
+                            <td><input type="number" name="total_price1[]" id="total_price{{$idCount++}}" value="{{ $service->service_amount * $service->price }}" disabled required></td>
+                        </tr>
+                        @endforeach
+                    
+                    @else
                     <tr>
                         <td>Töö:</td>
                         <td><input type="text" name="service[]" id="service_description1" required></td>
                         <td>Teenus:</td>
                         <td><select name="service_type[]" id="service_types1" onchange="changeUnits(1)"></select></td>
+                        <input type="hidden" id="oldType1" value="1">
                         <td>kogus:</td>
                         <td><input type="number" name="amount1[]" id="amount1" onchange="calculateTotal(1);" required></td>
                         <td><span id="unit_type1"></span></td>
@@ -47,6 +67,22 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
                         <td>hind kokku:</td>
                         <td><input type="number" name="total_price1[]" id="total_price1" disabled value="0" required></td>
                     </tr>
+                    @endif
+                    @if($oldOrder != null)
+                        @foreach($oldOrder->parts as $part)
+                        <tr>
+                            <td>Osa:</td>
+                            <td colspan="3"><input type="text" name="part[]" id="part_description{{$idCount}}" value="{{ $part->part_name }}" required style="width: 100%;"></td>
+                            <td>kogus:</td>
+                            <td><input type="number" name="amount2[]" id="amount{{$idCount}}" value="{{ $part->part_count }}" onchange="calculateTotal(2);" required></td>
+                            <td>[tk]</td>
+                            <td>ühiku hind:</td>
+                            <td><input type="number" name="unit_price2[]" id="unit_price{{$idCount}}" value="{{ $part->part_price }}" onchange="calculateTotal(2);" required></td>
+                            <td>hind kokku:</td>
+                            <td><input type="number" name="total_price2[]" id="total_price{{$idCount++}}" disabled value="{{ $part->part_price * $part->part_count }}"required></td>
+                        </tr>
+                        @endforeach
+                    @else
                     <tr>
                         <td>Osa:</td>
                         <td colspan="3"><input type="text" name="part[]" id="part_description2" required style="width: 100%;"></td>
@@ -58,6 +94,7 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
                         <td>hind kokku:</td>
                         <td><input type="number" name="total_price2[]" id="total_price2" disabled value="0"required></td>
                     </tr>
+                    @endif
                     <tr>
                         <td><a href="javascript:addNewService()">Lisa töö</a></td>
                         <td><a href="javascript:addNewPart()">Lisa osa</a></td>
@@ -153,5 +190,17 @@ var urlToGetDeviceName = '{{ route('getdevicename') }}';
         </div>
     </div>
 </div>
+<script> 
+    
+@if($idCount>2)
+    var addition = {{$idCount}} - 3;
+    var actionCount = {{ count($oldOrder->actions) }}
+@else
+    var addition =0;
+    var actionCount =1;
+@endif
+
+
+</script>
 <script src="{{ URL::to('src/js/serviceorder.js') }}"></script>
 @endsection
