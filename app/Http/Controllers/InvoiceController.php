@@ -9,6 +9,9 @@ use App\Invoice;
 use App\Invoice_status_type;
 use App\Service_order;
 use App\User;
+use App\Service_action;
+use App\Service_part;
+use App\Invoice_row;
 
 class InvoiceController extends Controller
 {
@@ -51,9 +54,39 @@ class InvoiceController extends Controller
         $newInvoice->due_date = $Date2;
         $newInvoice->receiver_name = $request->customer;
         $newInvoice->timestamps = false;
-        if($newInvoice->save()) {
-            return redirect()->route('invoices');
+        $newInvoice->save();
+        $actions = Service_action::where('service_order_id', $request->orderID)->get();
+        foreach($actions as $action) {
+            $invRow = new Invoice_row();
+            $invRow->service_action_id = $action->id;
+            $invRow->invoice_id = $newInvoice->id;
+            $invRow->action_part_description = $action->action_description;
+            $invRow->amount = $action->service_amount;
+            $invRow->unit_price = $action ->price;
+            $invRow->timestamps = false;
+            $invRow->save();
         }
+        
+        $parts = Service_part::where('service_order_id', $request->orderID)->get();
+        
+        foreach($parts as $part) {
+            $newpart = new Invoice_row();
+            $newpart->service_part_id = $part->id;
+            $newpart->invoice_id = $newInvoice->id;
+            
+            $newpart->action_part_description = $part->part_name;
+            $newpart->amount = $part->part_count;
+            $newpart->unit_price = $part ->part_price;
+            $newpart->timestamps = false;
+            
+            $newpart->save();
+        }
+        
+        
+        
+       
+            return redirect()->route('invoices');
+       
         
     }
     
