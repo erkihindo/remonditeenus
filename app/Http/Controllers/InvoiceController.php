@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Invoice;
 use App\Invoice_status_type;
+use App\Service_request;
 use App\Service_order;
 use App\User;
 use App\Service_action;
@@ -27,10 +28,11 @@ class InvoiceController extends Controller
 
 
     public function newInvoice(Request $request) {
-        //dd($request);
-        $order = Service_order::find($request->requestID);
+        $request = Service_request::find($request->requestID);
+        $order = Service_order::where('service_request_id', $request->id)->first();
         $allInvoiceCount = count(Invoice::get());
         $newID = $allInvoiceCount +1;
+       
         return view('employee/invoice', ['newID' => $newID,
             'serviceorder' => $order]);
     }
