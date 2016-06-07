@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <table class="table">
+            <table class="table table-hover">
                 <th>
                     id
                 </th>
@@ -21,7 +21,7 @@
                     uuendatud
                 </th>
                 @foreach($orders as $order)
-                <tr>
+                <tr class="clickable" onclick="window.open('{{ URL::to('notes') . "/". $order->id }}','_self');">
                     <td>
                         {{ $order->id }}
                     </td>
