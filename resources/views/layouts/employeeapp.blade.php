@@ -67,6 +67,10 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/invoices') }}">Invoices</a></li>
                 </ul>
+                
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/logs') }}">Logs</a></li>
+                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">

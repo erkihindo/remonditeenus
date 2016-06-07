@@ -142,6 +142,7 @@ class ServiceOrderController extends Controller
         $newServiceDevice->device_id = $request->service_device;
         $newServiceDevice->service_order_id = $order->id;
         $newServiceDevice->save();
+        \Illuminate\Support\Facades\Log::info('Created' . $order);
         return response()->json($order,200);
         
     }
@@ -186,6 +187,7 @@ class ServiceOrderController extends Controller
         $newServiceDevice->device_id = $request->service_device;
         $newServiceDevice->service_order_id = $order->id;
         $newServiceDevice->save();
+        \Illuminate\Support\Facades\Log::info('Updated' . $order);
         return response()->json($order,200);
         
     }

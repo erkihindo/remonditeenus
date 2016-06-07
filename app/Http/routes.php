@@ -41,6 +41,9 @@ Route::get('/deviceparts', [
     'uses' => 'DevicePartsController@index',
     'middleware' => 'employee'
     ]);
+Route::get('/logs',[
+    'uses' => '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index',
+    'middleware' => 'employee']);
 Route::get('/devices', [
     'uses' => 'DeviceController@alldevices',
     'as' => 'devices',
