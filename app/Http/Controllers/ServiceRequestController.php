@@ -45,6 +45,7 @@ class ServiceRequestController extends Controller
         $newSerReq->service_desc_by_employee = $request->employee_desc;
         
         if($newSerReq->save()) {
+            \Illuminate\Support\Facades\Log::info('Created' . $newSerReq);
             return redirect()->route('serviceorder', ['servicerequest' => $newSerReq]);
         } else {
             return redirect('servicerequest');

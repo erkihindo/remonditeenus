@@ -83,7 +83,7 @@ class InvoiceController extends Controller
         }
         
         
-        
+        \Illuminate\Support\Facades\Log::info('Created' . $newInvoice);
        
             return redirect()->route('invoices');
        
